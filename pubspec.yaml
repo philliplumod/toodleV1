@@ -12,6 +12,11 @@ dependencies:
     sdk: flutter
   get: ^4.6.5
   get_storage: ^2.1.1
+  google_fonts: ^4.0.3
+  intl: ^0.17.0
+  date_picker_timeline: ^1.2.3
+  sqflite: ^2.2.6
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +25,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - images/man.png

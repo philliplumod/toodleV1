@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:toddle/ui/theme.dart';
+
+import '../utilities/colors.dart';
 
 class PopService {
   final _box = GetStorage();
@@ -28,11 +31,10 @@ class PopService {
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.scale,
-
       autoHide: const Duration(seconds: 2),
-      headerAnimationLoop: false,
-      title: 'Theme changed',
+      dialogBackgroundColor: Get.isDarkMode ? customCosmic : customDavy[900],
       desc: message,
+      descTextStyle: textStyle,
       // btnOkOnPress: () {},
     ).show();
   }
