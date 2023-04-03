@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static final lightTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: customCosmic).copyWith(
-      background: customCosmic[900],
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: defaultColor).copyWith(
+      background: defaultColor,
       brightness: Brightness.light,
     ),
   );
   static final darkTheme = ThemeData(
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: customDavy).copyWith(
-      background: customDavy[900],
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: nightColor).copyWith(
+      background: nightColor,
       brightness: Brightness.dark,
     ),
   );
@@ -23,7 +23,7 @@ TextStyle get subHeadingStyle {
       textStyle: TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
-    color: Get.isDarkMode ? customCosmic : customDavy[900],
+    color: Get.isDarkMode ? defaultColor : nightColor,
   ));
 }
 
@@ -32,7 +32,7 @@ TextStyle get headingStyle {
       textStyle: TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.bold,
-          color: Get.isDarkMode ? customCosmic : customDavy[900]));
+          color: Get.isDarkMode ? defaultColor : nightColor));
 }
 
 TextStyle get textStyle {
@@ -40,7 +40,7 @@ TextStyle get textStyle {
       textStyle: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
-          color: Get.isDarkMode ? customDavy[900] : customCosmic));
+          color: Get.isDarkMode ? defaultColor : nightColor));
 }
 
 TextStyle get subtextStyle {
@@ -48,7 +48,7 @@ TextStyle get subtextStyle {
       textStyle: TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w600,
-          color: Get.isDarkMode ? customCosmic : customDavy[900]));
+          color: Get.isDarkMode ? defaultColor : nightColor));
 }
 
 TextStyle get dateTextStyle {
@@ -56,5 +56,5 @@ TextStyle get dateTextStyle {
       textStyle: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w700,
-          color: Get.isDarkMode ? customCosmic[900] : customDavy[900]));
+          color: Get.isDarkMode ? defaultColor : nightColor));
 }

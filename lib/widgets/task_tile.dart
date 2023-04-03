@@ -31,8 +31,8 @@ class TaskTile extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Get.isDarkMode ? customDavy : customCosmic),
+                        fontWeight: FontWeight.w600,
+                        color: nightColor),
                   ),
                 ),
                 const SizedBox(
@@ -41,18 +41,13 @@ class TaskTile extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.access_time_rounded,
-                      color: Get.isDarkMode ? customDavy : customCosmic,
-                      size: 18,
-                    ),
+                    Icon(Icons.access_time_rounded,
+                        color: nightColor, size: 18),
                     const SizedBox(width: 4),
                     Text(
                       "${task!.startTime} - ${task!.endTime}",
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                            fontSize: 13,
-                            color: Get.isDarkMode ? customDavy : customCosmic),
+                        textStyle: TextStyle(fontSize: 13, color: nightColor),
                       ),
                     ),
                   ],
@@ -61,20 +56,17 @@ class TaskTile extends StatelessWidget {
                 Text(
                   task?.note ?? "",
                   style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                        fontSize: 15,
-                        color: Get.isDarkMode ? customDavy : customCosmic),
+                    textStyle: TextStyle(fontSize: 15, color: nightColor),
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            height: 60,
-            width: 0.5,
-            color: Get.isDarkMode ? customDavy[500] : customCosmic[500],
-          ),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              height: 60,
+              width: 0.5,
+              color: nightColor),
           RotatedBox(
             quarterTurns: 3,
             child: Text(
@@ -83,7 +75,7 @@ class TaskTile extends StatelessWidget {
                 textStyle: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: Get.isDarkMode ? customDavy : customCosmic),
+                    color: nightColor),
               ),
             ),
           ),
@@ -92,16 +84,29 @@ class TaskTile extends StatelessWidget {
     );
   }
 
+  // _getBGClr(int no) {
+  //   switch (no) {
+  //     case 0:
+  //       return customAccentColor3;
+  //     case 1:
+  //       return customAccentColor1;
+  //     case 2:
+  //       return customAccentColor2;
+  //     default:
+  //       return customAccentColor3;
+  //   }
+  // }
+
   _getBGClr(int no) {
     switch (no) {
       case 0:
-        return Get.isDarkMode ? customCosmic : customDavy;
+        return customAccentColor1;
       case 1:
-        return Get.isDarkMode ? customCosmic : customDavy;
+        return customAccentColor2;
       case 2:
-        return customDeep;
+        return customAccentColor3;
       default:
-        return customRed;
+        return customAccentColor1;
     }
   }
 }

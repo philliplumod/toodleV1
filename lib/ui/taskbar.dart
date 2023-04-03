@@ -68,7 +68,7 @@ class _AddTaskState extends State<AddTask> {
                   controller: null,
                   widget: IconButton(
                     icon: Icon(Icons.calendar_today_rounded,
-                        color: Get.isDarkMode ? customCosmic : customDavy[900]),
+                        color: Get.isDarkMode ? defaultColor : nightColor),
                     onPressed: () {
                       _getDate();
                     },
@@ -85,9 +85,7 @@ class _AddTaskState extends State<AddTask> {
                           _getTimeFromUser(isStartTime: true);
                         },
                         icon: Icon(Icons.access_time_rounded,
-                            color: Get.isDarkMode
-                                ? customCosmic
-                                : customDavy[900])),
+                            color: Get.isDarkMode ? defaultColor : nightColor)),
                   )),
                   const SizedBox(width: 10),
                   Expanded(
@@ -100,9 +98,7 @@ class _AddTaskState extends State<AddTask> {
                           _getTimeFromUser(isStartTime: false);
                         },
                         icon: Icon(Icons.access_time_rounded,
-                            color: Get.isDarkMode
-                                ? customCosmic
-                                : customDavy[900])),
+                            color: Get.isDarkMode ? defaultColor : nightColor)),
                   )),
                 ],
               ),
@@ -112,11 +108,11 @@ class _AddTaskState extends State<AddTask> {
                   controller: null,
                   widget: DropdownButton(
                     icon: Icon(Icons.arrow_drop_down_rounded,
-                        color: Get.isDarkMode ? customCosmic : customDavy[900]),
+                        color: Get.isDarkMode ? defaultColor : nightColor),
                     iconSize: 32,
                     elevation: 3,
                     style: textStyle.copyWith(
-                        color: Get.isDarkMode ? customCosmic : customDavy[900]),
+                        color: Get.isDarkMode ? defaultColor : nightColor),
                     underline: Container(height: 0),
                     items:
                         remindRange.map<DropdownMenuItem<String>>((int value) {
@@ -137,11 +133,11 @@ class _AddTaskState extends State<AddTask> {
                   controller: null,
                   widget: DropdownButton(
                     icon: Icon(Icons.arrow_drop_down_rounded,
-                        color: Get.isDarkMode ? customCosmic : customDavy[900]),
+                        color: Get.isDarkMode ? defaultColor : nightColor),
                     iconSize: 32,
                     elevation: 3,
                     style: textStyle.copyWith(
-                        color: Get.isDarkMode ? customCosmic : customDavy[900]),
+                        color: Get.isDarkMode ? defaultColor : nightColor),
                     underline: Container(height: 0),
                     items: repeatList
                         .map<DropdownMenuItem<String>>((String? value) {
@@ -184,12 +180,12 @@ class _AddTaskState extends State<AddTask> {
     } else if (_titleController.text.isEmpty ||
         _descriptionController.text.isEmpty) {
       Get.snackbar("Error", "All fields are required",
-          backgroundColor: Get.isDarkMode ? customCosmic : customDavy,
+          backgroundColor: Get.isDarkMode ? defaultColor : nightColor,
           snackPosition: SnackPosition.BOTTOM,
           snackStyle: SnackStyle.FLOATING,
-          colorText: Get.isDarkMode ? customDavy : customCosmic,
+          colorText: Get.isDarkMode ? nightColor : defaultColor,
           icon: Icon(Icons.warning_amber_rounded,
-              color: Get.isDarkMode ? customDavy : customCosmic));
+              color: Get.isDarkMode ? nightColor : defaultColor));
     }
   }
 
@@ -199,7 +195,7 @@ class _AddTaskState extends State<AddTask> {
       children: [
         Text("Color",
             style: textStyle.copyWith(
-              color: Get.isDarkMode ? customCosmic : customDavy[900],
+              color: Get.isDarkMode ? defaultColor : nightColor,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             )),
@@ -217,12 +213,10 @@ class _AddTaskState extends State<AddTask> {
               child: CircleAvatar(
                 radius: 14,
                 backgroundColor: index == 0
-                    ? Get.isDarkMode
-                        ? customCosmic
-                        : customDavy
+                    ? customAccentColor1
                     : index == 1
-                        ? customRed
-                        : customDeep,
+                        ? customAccentColor2
+                        : customAccentColor3,
                 child: index == _selectedColor
                     ? const Icon(Icons.check_rounded,
                         color: Colors.white, size: 16)
@@ -246,7 +240,7 @@ class _AddTaskState extends State<AddTask> {
         },
         child: Icon(
           Icons.arrow_back_ios_new_rounded,
-          color: Get.isDarkMode ? customCosmic : customDavy,
+          color: Get.isDarkMode ? defaultColor : nightColor,
           size: 20,
         ),
       ),
@@ -269,12 +263,12 @@ class _AddTaskState extends State<AddTask> {
           return Theme(
             data: ThemeData.light().copyWith(
               colorScheme: ColorScheme.light(
-                primary: Get.isDarkMode ? customCosmic : customDavy,
-                onPrimary: Get.isDarkMode ? customDavy : customCosmic,
-                surface: Get.isDarkMode ? customDavy : customCosmic,
-                onSurface: Get.isDarkMode ? customCosmic : customDavy,
+                primary: Get.isDarkMode ? defaultColor : nightColor,
+                onPrimary: Get.isDarkMode ? nightColor : defaultColor,
+                surface: Get.isDarkMode ? nightColor : defaultColor,
+                onSurface: Get.isDarkMode ? defaultColor : nightColor,
               ),
-              dialogBackgroundColor: Get.isDarkMode ? customDavy : customCosmic,
+              dialogBackgroundColor: Get.isDarkMode ? defaultColor : nightColor,
             ),
             child: child!,
           );
@@ -325,13 +319,13 @@ class _AddTaskState extends State<AddTask> {
             child: Theme(
               data: ThemeData.light().copyWith(
                 colorScheme: ColorScheme.light(
-                  primary: customRed,
-                  onSurface: customRed,
+                  primary: customAccentColor1,
+                  onSurface: customAccentColor2,
                 ),
                 buttonTheme: ButtonThemeData(
                   colorScheme: ColorScheme.light(
-                    primary: customRed,
-                    onSurface: customRed,
+                    primary: customAccentColor1,
+                    onSurface: customAccentColor2,
                   ),
                 ),
               ),
@@ -342,7 +336,7 @@ class _AddTaskState extends State<AddTask> {
   }
 
   _addTaskDb() async {
-   int value = await  _taskController.addTask(
+    int value = await _taskController.addTask(
         task: Task(
       title: _titleController.text,
       note: _descriptionController.text,

@@ -44,19 +44,16 @@ class _HomePageState extends State<HomePage> {
 
   _dateTimeline() {
     return Container(
-      margin: const EdgeInsets.only(top: 20, left: 20),
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: DatePicker(
         DateTime.now(),
-        height: 100,
-        width: 80,
         initialSelectedDate: DateTime.now(),
-        selectionColor: customRed,
-        selectedTextColor: customCosmic,
+        selectionColor: customAccentColor3,
+        selectedTextColor: defaultColor,
         dateTextStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
-          fontSize: 14,
           fontWeight: FontWeight.w600,
-          color: Get.isDarkMode ? customCosmic : customDavy,
+          color: Get.isDarkMode ? defaultColor : nightColor,
         )),
         monthTextStyle: dateTextStyle,
         dayTextStyle: dateTextStyle,
@@ -83,12 +80,12 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   DateFormat.yMMMMd().format(DateTime.now()),
                   style: subHeadingStyle.copyWith(
-                      color: Get.isDarkMode ? customCosmic : customDavy),
+                      color: Get.isDarkMode ? defaultColor : nightColor),
                 ),
                 Text(
                   "Today",
                   style: headingStyle.copyWith(
-                      color: Get.isDarkMode ? customCosmic : customDavy),
+                      color: Get.isDarkMode ? defaultColor : nightColor),
                 )
               ],
             ),
@@ -116,7 +113,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
-          color: Get.isDarkMode ? customCosmic : customDavy,
+          color: Get.isDarkMode ? defaultColor : nightColor,
           size: 20,
         ),
       ),
@@ -163,7 +160,7 @@ class _HomePageState extends State<HomePage> {
         height: task.isCompleted == 1
             ? MediaQuery.of(context).size.height * 0.24
             : MediaQuery.of(context).size.height * 0.32,
-        color: customDeep,
+        color: Get.isDarkMode ? defaultColor : nightColor,
         child: Column(
           children: [
             Container(
@@ -171,7 +168,9 @@ class _HomePageState extends State<HomePage> {
               height: 6,
               width: 120,
               decoration: BoxDecoration(
-                  color: customDavy[200],
+                  color: Get.isDarkMode
+                      ? nightColor.withOpacity(0.1)
+                      : defaultColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10)),
             ),
             const Spacer(),
@@ -180,17 +179,26 @@ class _HomePageState extends State<HomePage> {
                 : _bottomSheetButton(
                     label: "Task Completed",
                     onTap: () {
+                      setState(() {
+                        _taskController.taskCompleted(task.id!);
+                      });
                       Get.back();
                     },
-                    clr: customRed,
+                    clr: customAccentColor1,
                     context: context),
             const SizedBox(height: 20),
             _bottomSheetButton(
                 label: "Delete Task",
                 onTap: () {
+                  setState(() {
+                    _taskController.delete(task);
+                    _taskController.getTask();
+                  });
+                  // _taskController.delete(task);
+                  // _taskController.getTask();
                   Get.back();
                 },
-                clr: customFrench,
+                clr: customAccentColor2,
                 context: context),
             const SizedBox(height: 10),
             _bottomSheetButton(
@@ -199,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Get.back();
                 },
-                clr: customDavy,
+                clr: defaultColor,
                 context: context)
           ],
         ),
@@ -220,10 +228,18 @@ class _HomePageState extends State<HomePage> {
         height: 50,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
-          color: isClose == true ? customDavy : clr,
+          color: isClose == true
+              ? Get.isDarkMode
+                  ? defaultColor
+                  : nightColor
+              : clr,
           border: Border.all(
             width: 2,
-            color: isClose == true ? customDavy : clr,
+            color: isClose == true
+                ? Get.isDarkMode
+                    ? nightColor
+                    : defaultColor
+                : clr,
           ),
           borderRadius: BorderRadius.circular(20),
         ),
@@ -231,7 +247,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(
           label,
           style: subHeadingStyle.copyWith(
-              fontSize: 15, color: customCosmic, fontWeight: FontWeight.w300),
+              fontSize: 15, color: Get.isDarkMode ? nightColor : defaultColor),
         )),
       ),
     );

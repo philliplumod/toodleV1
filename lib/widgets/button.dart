@@ -17,13 +17,13 @@ class CustomButton extends StatelessWidget {
           width: 120,
           height: 50,
           decoration: BoxDecoration(
-            color: customRed,
+            color: customAccentColor3,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Center(
             child: Text(
               label,
-              style: textStyle.copyWith(color: customCosmic),
+              style: textStyle.copyWith(color: defaultColor),
             ),
           )),
     );

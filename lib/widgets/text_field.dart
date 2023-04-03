@@ -26,7 +26,7 @@ class CustomField extends StatelessWidget {
         children: [
           Text(title,
               style: textStyle.copyWith(
-                color: Get.isDarkMode ? customCosmic : customDavy,
+                color: Get.isDarkMode ? defaultColor : nightColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               )),
@@ -36,7 +36,7 @@ class CustomField extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15),
             decoration: BoxDecoration(
                 border: Border.all(
-                    color: Get.isDarkMode ? customCosmic : customDavy,
+                    color: Get.isDarkMode ? defaultColor : nightColor,
                     width: 2.0),
                 borderRadius: BorderRadius.circular(15)),
             child: Row(
@@ -45,7 +45,7 @@ class CustomField extends StatelessWidget {
                   child: TextFormField(
                     readOnly: widget == null ? false : true,
                     autofocus: false,
-                    cursorColor: Get.isDarkMode ? customCosmic : customDavy,
+                    cursorColor: Get.isDarkMode ? defaultColor : nightColor,
                     controller: controller,
                     style: subtextStyle,
                     decoration: InputDecoration(

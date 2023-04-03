@@ -32,7 +32,7 @@ class PopService {
       dialogType: DialogType.success,
       animType: AnimType.scale,
       autoHide: const Duration(seconds: 2),
-      dialogBackgroundColor: Get.isDarkMode ? customCosmic : customDavy[900],
+      dialogBackgroundColor: Get.isDarkMode ? nightColor : defaultColor,
       desc: message,
       descTextStyle: textStyle,
       // btnOkOnPress: () {},
