@@ -7,22 +7,9 @@ import 'package:toddle/ui/theme.dart';
 import '../utilities/colors.dart';
 
 class PopService {
-  final _box = GetStorage();
-  final _key = 'isDarkMode';
-
-  get context => Get.overlayContext;
-
-  _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
-  bool _loadThemeFromBox() => _box.read(_key) ?? false;
-
-  ThemeMode get theme => _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
-
-  void changeTheme() {
-    Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
-    _saveThemeToBox(!_loadThemeFromBox());
-  }
 
   //hello world
+    get context => Get.overlayContext;
 
   void showThemeChangeMessage() {
     final message =
@@ -38,4 +25,5 @@ class PopService {
       // btnOkOnPress: () {},
     ).show();
   }
+
 }

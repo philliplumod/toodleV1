@@ -3,7 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/services/theme_services.dart';
-import 'package:toddle/ui/popup.dart';
+import 'package:toddle/services/notification_popup.dart';
 import 'package:intl/intl.dart';
 import 'package:toddle/ui/taskbar.dart';
 import 'package:toddle/ui/theme.dart';
@@ -12,6 +12,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 import '../controllers/task_controller.dart';
 import '../models/task.dart';
+import '../services/notify_helper.dart';
 import '../utilities/colors.dart';
 import '../widgets/task_tile.dart';
 
@@ -25,6 +26,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   DateTime selectedDate = DateTime.now();
   final _taskController = Get.put(TaskController());
+  late String title;
+
+  var notifyHelper;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    notifyHelper = NotificationService();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +119,8 @@ class _HomePageState extends State<HomePage> {
       leading: GestureDetector(
         onTap: () {
           ThemeService().changeTheme();
-          PopService().showThemeChangeMessage();
+        //  PopService().showThemeChangeMessage();
+          NotificationService().scheduledNotification();
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
