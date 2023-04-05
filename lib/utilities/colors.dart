@@ -1,63 +1,75 @@
 import 'package:flutter/material.dart';
 
-// const Color davyGray = Color(0xFF4D4D4D);
-// const Color redWood = Color(0xFFB46060);
-// const Color deepPeach = Color(0xFFFFBF9B);
-// const Color cosmicLatte = Color(0xFFFFF4E0);
-
-Map<int, Color> davyGray = {
-  50: const Color.fromRGBO(77, 77, 77, .1),
-  100: const Color.fromRGBO(77, 77, 77, .2),
-  200: const Color.fromRGBO(77, 77, 77, .3),
-  300: const Color.fromRGBO(77, 77, 77, .4),
-  400: const Color.fromRGBO(77, 77, 77, .5),
-  500: const Color.fromRGBO(77, 77, 77, .6),
-  600: const Color.fromRGBO(77, 77, 77, .7),
-  700: const Color.fromRGBO(77, 77, 77, .8),
-  800: const Color.fromRGBO(77, 77, 77, .9),
-  900: const Color.fromRGBO(77, 77, 77, 1),
+Map<int, Color> isabelline = {
+  50: const Color.fromRGBO(245, 247, 237, .1),
+  100: const Color.fromRGBO(245, 247, 237, .2),
+  200: const Color.fromRGBO(245, 247, 237, .3),
+  300: const Color.fromRGBO(245, 247, 237, .4),
+  400: const Color.fromRGBO(245, 247, 237, .5),
+  500: const Color.fromRGBO(245, 247, 237, .6),
+  600: const Color.fromRGBO(245, 247, 237, .7),
+  700: const Color.fromRGBO(245, 247, 237, .8),
+  800: const Color.fromRGBO(245, 247, 237, .9),
+  900: const Color.fromRGBO(245, 247, 237, 1),
 };
 
-Map<int, Color> redWood = {
-  50: const Color.fromRGBO(255, 191, 155, .1),
-  100: const Color.fromRGBO(255, 191, 155, .2),
-  200: const Color.fromRGBO(255, 191, 155, .3),
-  300: const Color.fromRGBO(255, 191, 155, .4),
-  400: const Color.fromRGBO(255, 191, 155, .5),
-  500: const Color.fromRGBO(255, 191, 155, .6),
-  600: const Color.fromRGBO(255, 191, 155, .7),
-  700: const Color.fromRGBO(255, 191, 155, .8),
-  800: const Color.fromRGBO(255, 191, 155, .9),
-  900: const Color.fromRGBO(255, 191, 155, 1),
+Map<int, Color> darkBurgundy = {
+  50: const Color.fromRGBO(25, 2, 4, .1),
+  100: const Color.fromRGBO(25, 2, 4, .2),
+  200: const Color.fromRGBO(25, 2, 4, .3),
+  300: const Color.fromRGBO(25, 2, 4, .4),
+  400: const Color.fromRGBO(25, 2, 4, .5),
+  500: const Color.fromRGBO(25, 2, 4, .6),
+  600: const Color.fromRGBO(25, 2, 4, .7),
+  700: const Color.fromRGBO(25, 2, 4, .8),
+  800: const Color.fromRGBO(25, 2, 4, .9),
+  900: const Color.fromRGBO(25, 2, 4, 1),
 };
 
-Map<int, Color> deepPeach = {
-  50: const Color.fromRGBO(255, 191, 155, .1),
-  100: const Color.fromRGBO(255, 191, 155, .2),
-  200: const Color.fromRGBO(255, 191, 155, .3),
-  300: const Color.fromRGBO(255, 191, 155, .4),
-  400: const Color.fromRGBO(255, 191, 155, .5),
-  500: const Color.fromRGBO(255, 191, 155, .6),
-  600: const Color.fromRGBO(255, 191, 155, .7),
-  700: const Color.fromRGBO(255, 191, 155, .8),
-  800: const Color.fromRGBO(255, 191, 155, .9),
-  900: const Color.fromRGBO(255, 191, 155, 1),
+Map<int, Color> coralPink = {
+  50: const Color.fromRGBO(255, 137, 118, .1),
+  100: const Color.fromRGBO(255, 137, 118, .2),
+  200: const Color.fromRGBO(255, 137, 118, .3),
+  300: const Color.fromRGBO(255, 137, 118, .4),
+  400: const Color.fromRGBO(255, 137, 118, .5),
+  500: const Color.fromRGBO(255, 137, 118, .6),
+  600: const Color.fromRGBO(255, 137, 118, .7),
+  700: const Color.fromRGBO(255, 137, 118, .8),
+  800: const Color.fromRGBO(255, 137, 118, .9),
+  900: const Color.fromRGBO(255, 137, 118, 1),
 };
 
-Map<int, Color> cosmicLatte = {
-  50: const Color.fromRGBO(255, 244, 224, .1),
-  100: const Color.fromRGBO(255, 244, 224, .2),
-  200: const Color.fromRGBO(255, 244, 224, .3),
-  300: const Color.fromRGBO(255, 244, 224, .4),
-  400: const Color.fromRGBO(255, 244, 224, .5),
-  500: const Color.fromRGBO(255, 244, 224, .6),
-  600: const Color.fromRGBO(255, 244, 224, .7),
-  700: const Color.fromRGBO(255, 244, 224, .8),
-  800: const Color.fromRGBO(255, 244, 224, .9),
-  900: const Color.fromRGBO(255, 244, 224, 1),
+Map<int, Color> brickRed = {
+  50: const Color.fromRGBO(203, 78, 71, .1),
+  100: const Color.fromRGBO(203, 78, 71, .2),
+  200: const Color.fromRGBO(203, 78, 71, .3),
+  300: const Color.fromRGBO(203, 78, 71, .4),
+  400: const Color.fromRGBO(203, 78, 71, .5),
+  500: const Color.fromRGBO(203, 78, 71, .6),
+  600: const Color.fromRGBO(203, 78, 71, .7),
+  700: const Color.fromRGBO(203, 78, 71, .8),
+  800: const Color.fromRGBO(203, 78, 71, .9),
+  900: const Color.fromRGBO(203, 78, 71, 1),
 };
 
-MaterialColor customDavy = MaterialColor(0xFF4D4D4D, davyGray);
-MaterialColor customRed = MaterialColor(0xFFB46060, redWood);
-MaterialColor customDeep = MaterialColor(0xFFFFBF9B, deepPeach);
-MaterialColor customCosmic = MaterialColor(0xFFFFF4E0, cosmicLatte);
+Map<int, Color> peachYellow = {
+  50: const Color.fromRGBO(255, 203, 164, .1),
+  100: const Color.fromRGBO(255, 203, 164, .2),
+  200: const Color.fromRGBO(255, 203, 164, .3),
+  300: const Color.fromRGBO(255, 203, 164, .4),
+  400: const Color.fromRGBO(255, 203, 164, .5),
+  500: const Color.fromRGBO(255, 203, 164, .6),
+  600: const Color.fromRGBO(255, 203, 164, .7),
+  700: const Color.fromRGBO(255, 203, 164, .8),
+  800: const Color.fromRGBO(255, 203, 164, .9),
+  900: const Color.fromRGBO(255, 203, 164, 1),
+};
+
+
+
+
+MaterialColor defaultColor = MaterialColor(0xFFF5F7ED, isabelline);
+MaterialColor nightColor = MaterialColor(0xFF190204, darkBurgundy);
+MaterialColor customAccentColor1 = MaterialColor(0xFFFF8976, coralPink);
+MaterialColor customAccentColor3 = MaterialColor(0xFFCB4E47, brickRed);
+MaterialColor customAccentColor2 = MaterialColor(0xFFFFCBA4, peachYellow);
