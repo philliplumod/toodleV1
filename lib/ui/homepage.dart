@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: DatePicker(
         DateTime.now(),
-        initialSelectedDate: DateTime.now(),
+        initialSelectedDate: DateTime.now(),  
         selectionColor: customAccentColor3,
         selectedTextColor: defaultColor,
         dateTextStyle: GoogleFonts.poppins(
@@ -71,7 +71,9 @@ class _HomePageState extends State<HomePage> {
         onDateChange: (date) {
           selectedDate = date;
           // New date selected
-          setState(() {});
+          setState(() {
+            selectedDate = date;
+          });
         },
       ),
     );
@@ -119,7 +121,7 @@ class _HomePageState extends State<HomePage> {
       leading: GestureDetector(
         onTap: () {
           ThemeService().changeTheme();
-        //  PopService().showThemeChangeMessage();
+          //  PopService().showThemeChangeMessage();
           NotificationService().scheduledNotification();
         },
         child: Icon(
@@ -140,37 +142,60 @@ class _HomePageState extends State<HomePage> {
   _showTask() {
     return Expanded(child: Obx(() {
       return ListView.builder(
-        itemCount: _taskController.taskList.length,
-        itemBuilder: (BuildContext context, index) {
-          debugPrint(_taskController.taskList.length.toString());
-          return AnimationConfiguration.staggeredList(
-              position: index,
-              child: SlideAnimation(
-                  child: FadeInAnimation(
-                      child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      _showBottomSheet(
-                          context, _taskController.taskList[index]);
-                      //task);
-                    },
-                    child: TaskTile(_taskController.taskList[index]),
-                  )
-                ],
-              ))));
-        },
-      );
+          itemCount: _taskController.taskList.length,
+          itemBuilder: (BuildContext context, index) {
+            debugPrint(_taskController.taskList.length.toString());
+            Task task = _taskController.taskList[index];
+            debugPrint(task.toString());
+            if (task.repeat == 'Daily') {
+              return AnimationConfiguration.staggeredList(
+                  position: index,
+                  child: SlideAnimation(
+                      child: FadeInAnimation(
+                          child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _showBottomSheet(context, task);
+                          //task);
+                        },
+                        child: TaskTile(task),
+                      )
+                    ],
+                  ))));
+            }
+            if (task.date == DateFormat.yMd().format(selectedDate)) {
+              return AnimationConfiguration.staggeredList(
+                  position: index,
+                  child: SlideAnimation(
+                      child: FadeInAnimation(
+                          child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          _showBottomSheet(context, task);
+                          //task);
+                        },
+                        child: TaskTile(task),
+                      )
+                    ],
+                  ))));
+            } else {
+              return const SizedBox();
+            }
+          });
     }));
   }
 
   _showBottomSheet(BuildContext context, Task task) {
+    double bottomSheetHeight = task.isCompleted == 1
+        ? MediaQuery.of(context).size.height * 0.24
+        : MediaQuery.of(context).size.height * 0.32;
+
     Get.bottomSheet(
       Container(
         padding: const EdgeInsets.only(top: 4),
-        height: task.isCompleted == 1
-            ? MediaQuery.of(context).size.height * 0.24
-            : MediaQuery.of(context).size.height * 0.32,
+        height: bottomSheetHeight,
         color: Get.isDarkMode ? defaultColor : nightColor,
         child: Column(
           children: [
@@ -197,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     clr: customAccentColor1,
                     context: context),
-            const SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             _bottomSheetButton(
                 label: "Delete Task",
                 onTap: () {
@@ -205,13 +230,11 @@ class _HomePageState extends State<HomePage> {
                     _taskController.delete(task);
                     _taskController.getTask();
                   });
-                  // _taskController.delete(task);
-                  // _taskController.getTask();
                   Get.back();
                 },
                 clr: customAccentColor2,
                 context: context),
-            const SizedBox(height: 10),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             _bottomSheetButton(
                 label: "Close",
                 isClose: true,

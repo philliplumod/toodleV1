@@ -1,5 +1,8 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+// ignore: depend_on_referenced_packages
 import 'package:timezone/data/latest.dart' as tz;
+// ignore: depend_on_referenced_packages
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
@@ -21,18 +24,21 @@ class NotificationService {
   scheduledNotification() async {
     await notificationsPlugin.zonedSchedule(
         0,
-        'scheduled title',
-        'theme changes 5 seconds ago',
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+        'Theme Change 3 seconds ago',
+        Get.isDarkMode ? 'Light Mode' : 'Day Mode',
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 3)),
         const NotificationDetails(
             android: AndroidNotificationDetails(
-                'your channel id', 'your channel name',
-                importance: Importance.max)),
+          'your channel id',
+          'your channel name',
+          importance: Importance.max,
+        )),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
 
+// immediate notification
 // notificationDetails() {
 //   return const NotificationDetails(
 //     android: AndroidNotificationDetails(
@@ -44,8 +50,8 @@ class NotificationService {
 //   );
 // }
 
-  // Future<void> showNotificationMessage({required String message}) async {
-  //   await notificationsPlugin.show(
-  //       0, 'Theme Changed', message, await notificationDetails());
-  // }
+//   Future<void> showNotificationMessage({required String message}) async {
+//     await notificationsPlugin.show(
+//         0, 'Theme Changed', message, await notificationDetails());
+//   }
 }

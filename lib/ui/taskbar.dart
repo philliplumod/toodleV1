@@ -263,10 +263,10 @@ class _AddTaskState extends State<AddTask> {
           return Theme(
             data: ThemeData.light().copyWith(
               colorScheme: ColorScheme.light(
-                primary: Get.isDarkMode ? defaultColor : nightColor,
-                onPrimary: Get.isDarkMode ? nightColor : defaultColor,
-                surface: Get.isDarkMode ? nightColor : defaultColor,
-                onSurface: Get.isDarkMode ? defaultColor : nightColor,
+                primary: Get.isDarkMode ? nightColor : defaultColor,
+                onPrimary: Get.isDarkMode ? defaultColor : nightColor,
+                surface: Get.isDarkMode ? defaultColor : nightColor,
+                onSurface: Get.isDarkMode ? nightColor : defaultColor,
               ),
               dialogBackgroundColor: Get.isDarkMode ? defaultColor : nightColor,
             ),
