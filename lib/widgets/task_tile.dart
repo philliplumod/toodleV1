@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/models/task.dart';
 import 'package:toddle/utilities/colors.dart';
+
+
 
 class TaskTile extends StatelessWidget {
   final Task? task;
@@ -84,18 +85,6 @@ class TaskTile extends StatelessWidget {
     );
   }
 
-  // _getBGClr(int no) {
-  //   switch (no) {
-  //     case 0:
-  //       return customAccentColor3;
-  //     case 1:
-  //       return customAccentColor1;
-  //     case 2:
-  //       return customAccentColor2;
-  //     default:
-  //       return customAccentColor3;
-  //   }
-  // }
 
   _getBGClr(int no) {
     switch (no) {
