@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: DatePicker(
         DateTime.now(),
-        initialSelectedDate: DateTime.now(),  
+        initialSelectedDate: DateTime.now(),
         selectionColor: customAccentColor3,
         selectedTextColor: defaultColor,
         dateTextStyle: GoogleFonts.poppins(
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           ThemeService().changeTheme();
           //  PopService().showThemeChangeMessage();
-          NotificationService().scheduledNotification();
+          // NotificationService().scheduledNotification();
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
@@ -148,6 +148,13 @@ class _HomePageState extends State<HomePage> {
             Task task = _taskController.taskList[index];
             debugPrint(task.toString());
             if (task.repeat == 'Daily') {
+              DateTime date = DateFormat.jm().parse(task.startTime.toString());
+              var time = DateFormat("HH:mm").format(date);
+              notifyHelper.scheduledNotification(
+                int.parse(time.toString().split(":")[0]),
+                int.parse(time.toString().split(":")[1]),
+                task
+              );
               return AnimationConfiguration.staggeredList(
                   position: index,
                   child: SlideAnimation(
