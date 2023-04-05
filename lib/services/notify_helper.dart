@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
 import 'package:timezone/data/latest.dart' as tz;
@@ -14,22 +15,24 @@ class NotificationService {
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
         const AndroidInitializationSettings('appicon');
-    tz.initializeTimeZones();
-
+    _localTimezone();
     var initializationSettings =
         InitializationSettings(android: initializationSettingsAndroid);
     await notificationsPlugin.initialize(initializationSettings,
+    
         onDidReceiveNotificationResponse:
-            (NotificationResponse notificationResponse) async {});
+            (NotificationResponse notificationResponse) async {
+            
+            });
   }
 
   scheduledTaskNotification(int hour, int minutes, Task task) async {
     // int newTime = 5;
     await notificationsPlugin.zonedSchedule(
-        0,
-        'Theme Change 3 seconds ago',
-        Get.isDarkMode ? 'Light Mode' : 'Day Mode',
-        _converTime(hour, minutes),
+        task.id!.toInt(),
+        task.title,
+        task.note,
+        _convertTime(hour, minutes),
 
         //tz.TZDateTime.now(tz.local).add( Duration(seconds: newTime)),
         const NotificationDetails(
@@ -40,7 +43,8 @@ class NotificationService {
         )),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time);
   }
 
   tz.TZDateTime _convertTime(int hour, int minutes) {
@@ -53,6 +57,12 @@ class NotificationService {
     }
 
     return scheduledDate;
+  }
+
+  Future<void> _localTimezone() async {
+    tz.initializeTimeZones();
+    final String timeZone = await FlutterNativeTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(timeZone));
   }
 
   // scheduledNotification() async {

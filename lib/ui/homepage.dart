@@ -150,11 +150,11 @@ class _HomePageState extends State<HomePage> {
             if (task.repeat == 'Daily') {
               DateTime date = DateFormat.jm().parse(task.startTime.toString());
               var time = DateFormat("HH:mm").format(date);
-              notifyHelper.scheduledNotification(
-                int.parse(time.toString().split(":")[0]),
-                int.parse(time.toString().split(":")[1]),
-                task
-              );
+              NotificationService().scheduledTaskNotification(
+                  int.parse(time.toString().split(":")[0]),
+                  int.parse(time.toString().split(":")[1]),
+                  task);
+
               return AnimationConfiguration.staggeredList(
                   position: index,
                   child: SlideAnimation(
