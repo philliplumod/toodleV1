@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       child: DatePicker(
         DateTime.now(),
         initialSelectedDate: DateTime.now(),
-        selectionColor: customAccentColor3,
+        selectionColor: custombtnColor,
         selectedTextColor: defaultColor,
         dateTextStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
@@ -240,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                   });
                   Get.back();
                 },
-                clr: customAccentColor2,
+                clr: custombtnColor,
                 context: context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             _bottomSheetButton(

@@ -102,7 +102,6 @@ class _AddTaskState extends State<AddTask> {
                   )),
                 ],
               ),
-              
               CustomField(
                   title: "Remind",
                   hint: "${_remindList[0]} minutes early",
@@ -216,7 +215,7 @@ class _AddTaskState extends State<AddTask> {
                 backgroundColor: index == 0
                     ? customAccentColor1
                     : index == 1
-                        ? customAccentColor2
+                        ? customAccentColor1
                         : customAccentColor3,
                 child: index == _selectedColor
                     ? const Icon(Icons.check_rounded,
@@ -321,12 +320,12 @@ class _AddTaskState extends State<AddTask> {
               data: ThemeData.light().copyWith(
                 colorScheme: ColorScheme.light(
                   primary: customAccentColor1,
-                  onSurface: customAccentColor2,
+                  onSurface: customAccentColor3,
                 ),
                 buttonTheme: ButtonThemeData(
                   colorScheme: ColorScheme.light(
                     primary: customAccentColor1,
-                    onSurface: customAccentColor2,
+                    onSurface: customAccentColor3,
                   ),
                 ),
               ),
