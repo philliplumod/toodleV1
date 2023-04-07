@@ -102,6 +102,7 @@ class _AddTaskState extends State<AddTask> {
                   )),
                 ],
               ),
+              
               CustomField(
                   title: "Remind",
                   hint: "${_remindList[0]} minutes early",

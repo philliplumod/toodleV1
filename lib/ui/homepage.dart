@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     notifyHelper = NotificationService();
+    _taskController.getTask();
   }
 
   @override
