@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toddle/controllers/task_controller.dart';
+import 'package:toddle/models/task.dart';
+import 'package:toddle/services/notify_helper.dart';
 import 'package:toddle/services/theme_services.dart';
 import 'package:intl/intl.dart';
 import 'package:toddle/Pages/taskbar.dart';
+import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/button.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
-
-import '../controllers/task_controller.dart';
-import '../models/task.dart';
-import '../services/notify_helper.dart';
-import '../utilities/colors.dart';
-import '../widgets/task_tile.dart';
+import 'package:toddle/widgets/task_tile.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 // wrap this getView() homecreen in GetMaterialApp
 // GetMaterialApp(
@@ -294,4 +294,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }

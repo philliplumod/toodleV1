@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:toddle/Pages/homepage.dart';
+import 'package:toddle/Pages/wrapper.dart';
 
 class SplashScreenControler extends GetxController {
   static SplashScreenControler get find => Get.find();
@@ -9,6 +10,6 @@ class SplashScreenControler extends GetxController {
     await Future.delayed(const Duration(milliseconds: 500));
     animate.value = true;
     await Future.delayed(const Duration(milliseconds: 5000));
-    Get.to(() => const HomePage());
+    Get.to(() => MyWrapper());
   }
 }
