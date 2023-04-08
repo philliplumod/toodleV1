@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/models/task.dart';
 import 'package:toddle/utilities/colors.dart';
 
-
-
 class TaskTile extends StatelessWidget {
   final Task? task;
   const TaskTile(this.task, {super.key});
@@ -84,7 +82,6 @@ class TaskTile extends StatelessWidget {
       ),
     );
   }
-
 
   _getBGClr(int no) {
     switch (no) {

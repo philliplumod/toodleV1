@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:toddle/ui/theme.dart';
+import 'package:toddle/utilities/theme.dart';
 
 import '../utilities/colors.dart';
 

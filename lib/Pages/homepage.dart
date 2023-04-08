@@ -3,10 +3,9 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/services/theme_services.dart';
-import 'package:toddle/services/notification_popup.dart';
 import 'package:intl/intl.dart';
-import 'package:toddle/ui/taskbar.dart';
-import 'package:toddle/ui/theme.dart';
+import 'package:toddle/Pages/taskbar.dart';
+import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/button.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
@@ -16,6 +15,8 @@ import '../services/notify_helper.dart';
 import '../utilities/colors.dart';
 import '../widgets/task_tile.dart';
 
+// wrap this getView() homecreen in GetMaterialApp
+// GetMaterialApp(
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -28,12 +29,12 @@ class _HomePageState extends State<HomePage> {
   final _taskController = Get.put(TaskController());
   late String title;
 
-  var notifyHelper;
+  dynamic notifyHelper;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     notifyHelper = NotificationService();
+    _taskController.getTask();
   }
 
   @override
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       child: DatePicker(
         DateTime.now(),
         initialSelectedDate: DateTime.now(),
-        selectionColor: customAccentColor3,
+        selectionColor: custombtnColor,
         selectedTextColor: defaultColor,
         dateTextStyle: GoogleFonts.poppins(
             textStyle: TextStyle(
@@ -122,7 +123,7 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           ThemeService().changeTheme();
           //  PopService().showThemeChangeMessage();
-          // NotificationService().scheduledNotification();
+          NotificationService().scheduledNotification();
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
@@ -239,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                   });
                   Get.back();
                 },
-                clr: customAccentColor2,
+                clr: custombtnColor,
                 context: context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             _bottomSheetButton(

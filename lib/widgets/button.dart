@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toddle/utilities/colors.dart';
 
-import '../ui/theme.dart';
+import '../utilities/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
           width: 120,
           height: 50,
           decoration: BoxDecoration(
-            color: customAccentColor3,
+            color: custombtnColor,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Center(
