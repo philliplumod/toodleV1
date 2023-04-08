@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:toddle/controllers/splash_screen_controller.dart';
-import 'package:toddle/ui/theme.dart';
+import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/image.dart';
 

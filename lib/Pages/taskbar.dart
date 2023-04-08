@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/models/task.dart';
-import 'package:toddle/ui/theme.dart';
+import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/button.dart';
 
 import '../utilities/colors.dart';

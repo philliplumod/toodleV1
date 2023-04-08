@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toddle/utilities/colors.dart';
 
-import '../ui/theme.dart';
+import '../utilities/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;

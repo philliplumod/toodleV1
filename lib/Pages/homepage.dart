@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/services/theme_services.dart';
 import 'package:intl/intl.dart';
-import 'package:toddle/ui/taskbar.dart';
-import 'package:toddle/ui/theme.dart';
+import 'package:toddle/Pages/taskbar.dart';
+import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/button.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
@@ -15,6 +15,8 @@ import '../services/notify_helper.dart';
 import '../utilities/colors.dart';
 import '../widgets/task_tile.dart';
 
+// wrap this getView() homecreen in GetMaterialApp
+// GetMaterialApp(
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
