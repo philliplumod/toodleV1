@@ -3,7 +3,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddle/services/theme_services.dart';
-import 'package:toddle/services/notification_popup.dart';
 import 'package:intl/intl.dart';
 import 'package:toddle/ui/taskbar.dart';
 import 'package:toddle/ui/theme.dart';
@@ -28,10 +27,9 @@ class _HomePageState extends State<HomePage> {
   final _taskController = Get.put(TaskController());
   late String title;
 
-  var notifyHelper;
+  dynamic notifyHelper;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     notifyHelper = NotificationService();
     _taskController.getTask();
