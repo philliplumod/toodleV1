@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           ThemeService().changeTheme();
           //  PopService().showThemeChangeMessage();
-          // NotificationService().scheduledNotification();
+          NotificationService().scheduledNotification();
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,

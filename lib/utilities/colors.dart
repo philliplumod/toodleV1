@@ -85,3 +85,12 @@ MaterialColor custombtnColor = MaterialColor(0xFFCB4E47, brickRed);
 MaterialColor customAccentColor1 = MaterialColor(0xFFF9D6D7, lightPink);
 MaterialColor customAccentColor2 = MaterialColor(0xFFE8D5E7, paleLavender);
 MaterialColor customAccentColor3 = MaterialColor(0xFFFFE1C9, peach);
+
+final colorAnimate = [
+  defaultColor,
+  nightColor,
+  custombtnColor,
+  customAccentColor1,
+  customAccentColor2,
+  customAccentColor3,
+];

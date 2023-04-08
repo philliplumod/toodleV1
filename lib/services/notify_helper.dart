@@ -1,5 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
 import 'package:timezone/data/latest.dart' as tz;
 // ignore: depend_on_referenced_packages
@@ -60,5 +61,23 @@ class NotificationService {
     tz.initializeTimeZones();
     final String timeZone = await FlutterNativeTimezone.getLocalTimezone();
     tz.setLocalLocation(tz.getLocation(timeZone));
+  }
+  // reminder notification
+
+  scheduledNotification() async {
+    await notificationsPlugin.zonedSchedule(
+        0,
+        'Theme Change 3 seconds ago',
+        Get.isDarkMode ? 'Light Mode' : 'Night Mode',
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+        const NotificationDetails(
+            android: AndroidNotificationDetails(
+          'your channel id',
+          'your channel name',
+          importance: Importance.max,
+        )),
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime);
   }
 }
