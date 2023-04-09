@@ -5,6 +5,13 @@ class WrapperController extends GetxController {
   late PageController pageController;
 
   RxInt currentpage = 0.obs;
+
+  ThemeMode get theme => Get.isDarkMode ? ThemeMode.dark : ThemeMode.light;
+
+  void switchTheme ( ThemeMode newTheme) {
+    Get.changeThemeMode(newTheme);
+  }
+
   void goToTab(int page) {
     currentpage.value = page;
     pageController.jumpToPage(page);

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:toddle/Pages/homepage.dart';
 import 'package:toddle/Pages/wrapper.dart';
 
 class SplashScreenControler extends GetxController {

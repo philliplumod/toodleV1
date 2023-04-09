@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:toddle/Pages/homepage.dart';
 import 'package:toddle/Pages/profilepage.dart';
+import 'package:toddle/Pages/taskbar.dart';
+import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/controllers/wrapper_controller.dart';
 import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
@@ -10,7 +12,8 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 class MyWrapper extends StatelessWidget {
   MyWrapper({super.key});
 
-  final WrapperController controller = Get.put(WrapperController());
+  final WrapperController controller = Get.find<WrapperController>();
+  final _taskController = Get.put(TaskController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +27,26 @@ class MyWrapper extends StatelessWidget {
           ProfilePage(),
         ],
       ),
+      floatingActionButton: SizedBox(
+        width: 70.0,
+        height: 70.0,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: () async {
+              await Get.to(() => const AddTask());
+              _taskController.getTask();
+            },
+            backgroundColor: custombtnColor,
+            child: Icon(
+              Icons.add,
+              color: defaultColor,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        color: Get.isDarkMode ? Colors.red : defaultColor[500],
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         elevation: 0,
         child: Container(
@@ -59,15 +80,19 @@ class MyWrapper extends StatelessWidget {
           Icon(
             icon,
             color: controller.currentpage.value == page
-                ? custombtnColor
-                : nightColor,
+                ? custombtnColor[800]
+                : Get.isDarkMode
+                    ? nightColor
+                    : nightColor ,
           ),
           Text(
             label,
             style: textStyle.copyWith(
                 color: controller.currentpage.value == page
-                    ? custombtnColor
-                    : nightColor),
+                    ? custombtnColor[800]
+                    : Get.isDarkMode
+                        ? nightColor
+                        : nightColor),
           )
         ]),
       ),

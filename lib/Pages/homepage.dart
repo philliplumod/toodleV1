@@ -7,16 +7,11 @@ import 'package:toddle/models/task.dart';
 import 'package:toddle/services/notify_helper.dart';
 import 'package:toddle/services/theme_services.dart';
 import 'package:intl/intl.dart';
-import 'package:toddle/Pages/taskbar.dart';
 import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
-import 'package:toddle/widgets/button.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:toddle/widgets/task_tile.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-// wrap this getView() homecreen in GetMaterialApp
-// GetMaterialApp(
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -103,13 +98,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          CustomButton(
-            label: '+ Add Task',
-            onTap: () async {
-              await Get.to(() => const AddTask());
-              _taskController.getTask();
-            },
-          )
         ],
       ),
     );
@@ -120,6 +108,7 @@ class _HomePageState extends State<HomePage> {
       elevation: 0,
       backgroundColor: context.theme.colorScheme.background,
       leading: GestureDetector(
+
         onTap: () {
           ThemeService().changeTheme();
           //  PopService().showThemeChangeMessage();
@@ -294,6 +283,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
 }
