@@ -9,10 +9,16 @@ import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-class MyWrapper extends StatelessWidget {
-  MyWrapper({super.key});
+class MyWrapper extends StatefulWidget {
+  const MyWrapper({super.key});
 
+  @override
+  State<MyWrapper> createState() => _MyWrapperState();
+}
+
+class _MyWrapperState extends State<MyWrapper> {
   final WrapperController controller = Get.find<WrapperController>();
+
   final _taskController = Get.put(TaskController());
 
   @override
@@ -45,28 +51,32 @@ class MyWrapper extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
-        elevation: 0,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _bottomAppBarItem(
-                    icon: Icons.home_rounded, label: 'Home', page: 0, context),
-                _bottomAppBarItem(
-                    icon: Icons.person_rounded,
-                    label: 'Profile',
-                    page: 1,
-                    context),
-              ],
+      bottomNavigationBar: Obx(() => BottomAppBar(
+            color: context.theme.colorScheme.background,
+            shape: const CircularNotchedRectangle(),
+            notchMargin: 10,
+            elevation: 0,
+            clipBehavior: Clip.antiAlias,
+            child: Container(
+              // color: Get.isDarkMode ? null : defaultColor,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _bottomAppBarItem(
+                      icon: Icons.home_rounded,
+                      label: 'Home',
+                      page: 0,
+                      context),
+                  _bottomAppBarItem(
+                      icon: Icons.person_rounded,
+                      label: 'Profile',
+                      page: 1,
+                      context),
+                ],
+              ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 
@@ -80,19 +90,19 @@ class MyWrapper extends StatelessWidget {
           Icon(
             icon,
             color: controller.currentpage.value == page
-                ? custombtnColor[800]
+                ? custombtnColor
                 : Get.isDarkMode
-                    ? nightColor
-                    : nightColor ,
+                    ? defaultColor[300]
+                    : nightColor[300],
           ),
           Text(
             label,
             style: textStyle.copyWith(
                 color: controller.currentpage.value == page
-                    ? custombtnColor[800]
+                    ? custombtnColor
                     : Get.isDarkMode
-                        ? nightColor
-                        : nightColor),
+                        ? defaultColor[300]
+                        : nightColor[300]),
           )
         ]),
       ),

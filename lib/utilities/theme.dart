@@ -6,13 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class MyTheme {
   static final lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSwatch(primarySwatch: defaultColor).copyWith(
-      background: defaultColor,
+      background: defaultColor[500],
       brightness: Brightness.light,
     ),
   );
   static final darkTheme = ThemeData(
     colorScheme: ColorScheme.fromSwatch(primarySwatch: nightColor).copyWith(
-      background: nightColor,
+      background: nightColor[500],
       brightness: Brightness.dark,
     ),
   );

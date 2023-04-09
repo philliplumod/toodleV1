@@ -8,7 +8,7 @@ class WrapperController extends GetxController {
 
   ThemeMode get theme => Get.isDarkMode ? ThemeMode.dark : ThemeMode.light;
 
-  void switchTheme ( ThemeMode newTheme) {
+  void switchTheme(ThemeMode newTheme) {
     Get.changeThemeMode(newTheme);
   }
 

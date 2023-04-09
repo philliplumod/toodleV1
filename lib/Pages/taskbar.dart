@@ -215,7 +215,7 @@ class _AddTaskState extends State<AddTask> {
                 backgroundColor: index == 0
                     ? customAccentColor1
                     : index == 1
-                        ? customAccentColor1
+                        ? customAccentColor2
                         : customAccentColor3,
                 child: index == _selectedColor
                     ? const Icon(Icons.check_rounded,

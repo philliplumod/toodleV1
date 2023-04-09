@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    notifyHelper = NotificationService();
+    // notifyHelper = NotificationService();
     _taskController.getTask();
   }
 
@@ -108,11 +108,10 @@ class _HomePageState extends State<HomePage> {
       elevation: 0,
       backgroundColor: context.theme.colorScheme.background,
       leading: GestureDetector(
-
         onTap: () {
           ThemeService().changeTheme();
           //  PopService().showThemeChangeMessage();
-          NotificationService().scheduledNotification();
+          //NotificationService().scheduledNotification();
         },
         child: Icon(
           Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
