@@ -24,6 +24,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   flutter_animate: ^4.1.1+1
   zoom_tap_animation: ^1.1.0
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
@@ -49,12 +50,7 @@ flutter_native_splash:
 flutter:
   uses-material-design: true
   assets:
-    - images/man.png
-    - images/for_splash.png
-    - images/splash/bigBlob.png
-    - images/splash/dots1.png
-    - images/splash/lines.png
-    - images/splash/smolines.png
+    - images/
 
 flutter_icons:
   android: true

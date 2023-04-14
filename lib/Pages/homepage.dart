@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
 
   _dateTimeline() {
     return Container(
-      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
       child: DatePicker(
         DateTime.now(),
         initialSelectedDate: DateTime.now(),
@@ -71,6 +71,7 @@ class _HomePageState extends State<HomePage> {
             selectedDate = date;
           });
         },
+        height: MediaQuery.of(context).size.height * 0.1,
       ),
     );
   }

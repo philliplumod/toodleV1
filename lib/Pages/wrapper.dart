@@ -72,7 +72,7 @@ class _MyWrapperState extends State<MyWrapper> {
                       icon: Icons.person_rounded,
                       label: 'Profile',
                       page: 1,
-                      context),
+                      context), 
                 ],
               ),
             ),
@@ -93,7 +93,7 @@ class _MyWrapperState extends State<MyWrapper> {
                 ? custombtnColor
                 : Get.isDarkMode
                     ? defaultColor[300]
-                    : nightColor[300],
+                    : nightColor[500],
           ),
           Text(
             label,

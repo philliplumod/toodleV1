@@ -125,6 +125,8 @@ class _AddTaskState extends State<AddTask> {
                       setState(() {
                         _remindList = [int.parse(newValue!)];
                       });
+
+                      debugPrint(newValue);
                     },
                   )),
               CustomField(
