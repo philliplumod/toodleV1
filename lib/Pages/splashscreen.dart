@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Get.isDarkMode ? nightColor : defaultColor,
       body: Obx(
         () => AnimatedOpacity(
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 2),
           opacity: splashScreenController.animate.value ? 1 : 0,
           curve: Curves.linear,
           child: Column(
@@ -33,13 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
               const Image(image: AssetImage(splashIcon))
                   .animate(
                       onPlay: (controller) => controller.repeat(reverse: true))
-                  .fade(duration: 500.ms, curve: Curves.easeInOutCubic)
-                  .then()
-                  .shake(
-                    hz: 0.5,
-                    duration: 5000.ms,
-                    curve: Curves.easeInOutCubic,
-                  ),
+                  .fade(duration: 3000.ms, curve: Curves.easeInOutCubic)
+                  .then(),
               AnimatedTextKit(
                 animatedTexts: [
                   WavyAnimatedText('Toodle',

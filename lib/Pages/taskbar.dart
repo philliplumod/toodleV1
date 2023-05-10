@@ -255,34 +255,6 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 
-  _getDate() async {
-    DateTime? pickerDate = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2015),
-        lastDate: DateTime(2150),
-        builder: (BuildContext context, Widget? child) {
-          return Theme(
-            data: ThemeData.light().copyWith(
-              colorScheme: ColorScheme.light(
-                primary: Get.isDarkMode ? nightColor : defaultColor,
-                onPrimary: Get.isDarkMode ? defaultColor : nightColor,
-                surface: Get.isDarkMode ? defaultColor : nightColor,
-                onSurface: Get.isDarkMode ? nightColor : defaultColor,
-              ),
-              dialogBackgroundColor: Get.isDarkMode ? defaultColor : nightColor,
-            ),
-            child: child!,
-          );
-        });
-
-    if (pickerDate != null) {
-      setState(() {
-        selectedDate = pickerDate;
-      });
-    }
-  }
-
   _getTimeFromUser({required bool isStartTime}) async {
     var pickedTime = await _showTime();
 
@@ -309,32 +281,56 @@ class _AddTaskState extends State<AddTask> {
 
   _showTime() {
     return showTimePicker(
+      context: context,
+      initialEntryMode: TimePickerEntryMode.dialOnly,
+      initialTime: TimeOfDay(
+        hour: int.parse(startTime.split(":")[0]),
+        minute: int.parse(startTime.split(":")[1].split(" ")[0]),
+      ),
+      // builder: (BuildContext context, Widget? child) {
+      //   return Theme(
+      //     data: ThemeData(
+      //         colorScheme: ColorScheme.light(
+      //       primary: Get.isDarkMode ? nightColor : defaultColor,
+      //       surface: Get.isDarkMode ? defaultColor : nightColor,
+      //       onSurface: Get.isDarkMode ? nightColor : defaultColor,
+      //       onPrimary: Get.isDarkMode ? defaultColor : nightColor,
+      //     )),
+      //     child: child!,
+      //   );
+      // },
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData(
+            colorScheme: ColorScheme.light(primary: Get.theme.primaryColor),
+          ),
+          child: child!,
+        );
+      },
+    );
+  }
+
+  _getDate() async {
+    DateTime? pickerDate = await showDatePicker(
         context: context,
-        initialEntryMode: TimePickerEntryMode.input,
-        initialTime: TimeOfDay(
-          hour: int.parse(startTime.split(":")[0]),
-          minute: int.parse(startTime.split(":")[1].split(" ")[0]),
-        ),
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2150),
         builder: (BuildContext context, Widget? child) {
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
-            child: Theme(
-              data: ThemeData.light().copyWith(
+          return Theme(
+            data: ThemeData(
                 colorScheme: ColorScheme.light(
-                  primary: customAccentColor1,
-                  onSurface: customAccentColor3,
-                ),
-                buttonTheme: ButtonThemeData(
-                  colorScheme: ColorScheme.light(
-                    primary: customAccentColor1,
-                    onSurface: customAccentColor3,
-                  ),
-                ),
-              ),
-              child: child!,
-            ),
+              primary: Get.theme.primaryColor,
+            )),
+            child: child!,
           );
         });
+
+    if (pickerDate != null) {
+      setState(() {
+        selectedDate = pickerDate;
+      });
+    }
   }
 
   _addTaskDb() async {
