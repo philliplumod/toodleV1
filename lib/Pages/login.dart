@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:toddle/utilities/colors.dart';
-import 'package:toddle/utilities/customtextform.dart';
-import 'package:toddle/utilities/image.dart';
-import 'package:toddle/utilities/theme.dart';
-
 import '../widgets/customButton.dart';
+import '../utilities/colors.dart';
+import '../utilities/customtextform.dart';
+import '../utilities/image.dart';
+import '../utilities/theme.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class Login extends StatelessWidget {
             child: Column(
               children: [
                 const Image(
-                  image: AssetImage(splashIcon),
+                  image: AssetImage('images/icon.png'),
                   width: 300,
                   height: 300,
                 ),
@@ -40,39 +39,44 @@ class Login extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 18,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6),
-                        ),
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 18,
                       ),
-                      child: const Image(
-                        height: 20,
-                        image: AssetImage('images/google.png'),
-                      )),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                    ),
+                    child: const Image(
+                      height: 20,
+                      image: AssetImage('images/google.png'),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 TextButton(
-                    onPressed: () {},
-                    child: Text.rich(TextSpan(
-                        text: 'Don\'t have an account? ',
-                        style: textStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                  onPressed: () {},
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'Don\'t have an account? ',
+                      style: textStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Sign up',
+                          style: textStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.red,
+                          ),
                         ),
-                        children: [
-                          TextSpan(
-                            text: 'Sign up',
-                            style: textStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.red,
-                            ),
-                          )
-                        ])))
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:toddle/Pages/login.dart';
-import 'package:toddle/Pages/wrapper.dart';
+import 'package:toddle/Pages/signup.dart';
 
 class SplashScreenControler extends GetxController {
   static SplashScreenControler get find => Get.find();
