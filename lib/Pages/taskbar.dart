@@ -287,18 +287,6 @@ class _AddTaskState extends State<AddTask> {
         hour: int.parse(startTime.split(":")[0]),
         minute: int.parse(startTime.split(":")[1].split(" ")[0]),
       ),
-      // builder: (BuildContext context, Widget? child) {
-      //   return Theme(
-      //     data: ThemeData(
-      //         colorScheme: ColorScheme.light(
-      //       primary: Get.isDarkMode ? nightColor : defaultColor,
-      //       surface: Get.isDarkMode ? defaultColor : nightColor,
-      //       onSurface: Get.isDarkMode ? nightColor : defaultColor,
-      //       onPrimary: Get.isDarkMode ? defaultColor : nightColor,
-      //     )),
-      //     child: child!,
-      //   );
-      // },
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData(

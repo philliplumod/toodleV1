@@ -20,11 +20,9 @@ class CustomButton extends StatelessWidget {
             color: custombtnColor,
             borderRadius: BorderRadius.circular(18),
           ),
-          child: Center(
-            child: Text(
-              label,
-              style: textStyle.copyWith(color: defaultColor),
-            ),
+          child: Text(
+            label,
+            style: textStyle.copyWith(color: defaultColor),
           )),
     );
   }
