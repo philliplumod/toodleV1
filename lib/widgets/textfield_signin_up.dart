@@ -5,18 +5,20 @@ import 'package:toddle/utilities/theme.dart';
 import '../utilities/colors.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String hint;
-  final String label;
+  final String? hint;
+  final String? label;
+  final TextEditingController? controller;
   final IconData? icon;
   final IconData? suffixIcon;
   final VoidCallback? onPressed;
   const CustomTextField({
     Key? key,
     this.icon,
-    required this.hint,
-    required this.label,
+    this.hint,
+    this.label,
     this.onPressed,
     this.suffixIcon,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       child: TextFormField(
+        controller: controller,
         style: subtextStyle,
         decoration: InputDecoration(
           prefixIcon: Icon(
