@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/image.dart';
 import 'package:toddle/utilities/theme.dart';
-import 'package:toddle/widgets/customButton.dart';
+import 'package:toddle/widgets/custombutton.dart';
+import 'package:toddle/widgets/customoutlinebutton.dart';
+import 'package:toddle/widgets/textfield_signin_up.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
+            margin: EdgeInsets.only(top: size.height * 0.1),
             padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -28,75 +29,49 @@ class SignUp extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Form(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.person_outline_rounded,
-                              color: nightColor,
+                    child: Column(
+                      children: [
+                        const CustomTextField(
+                          label: 'Full Name',
+                          hint: 'Full Name',
+                          icon: Icons.person_2_outlined,
+                        ),
+                        const CustomTextField(
+                          label: 'Email',
+                          hint: 'Email',
+                          icon: Icons.email_outlined,
+                        ),
+                        CustomTextField(
+                          label: 'Password',
+                          hint: 'Password',
+                          icon: Icons.fingerprint_outlined,
+                          onPressed: () {},
+                          suffixIcon: Icons.visibility_outlined,
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        CustomElevatedButton(
+                          label: 'Sign up',
+                          onPressed: () {},
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        Center(
+                          child: Text(
+                            'Or Continue with',
+                            style: textStyle.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
                             ),
-                            hintText: 'Full Name',
-                            labelText: 'Full Name',
-                            border: const OutlineInputBorder()),
-                      ),
-                      SizedBox(height: size.height * 0.02),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.email_outlined,
-                              color: nightColor,
-                            ),
-                            hintText: 'Email',
-                            labelText: 'Email',
-                            border: const OutlineInputBorder()),
-                      ),
-                      SizedBox(height: size.height * 0.02),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.fingerprint_outlined,
-                              color: nightColor,
-                            ),
-                            hintText: 'Password',
-                            labelText: 'Password',
-                            border: const OutlineInputBorder()),
-                      ),
-                      SizedBox(height: size.height * 0.03),
-                      CustomElevatedButton(label: 'Sign up', onPressed: () {}),
-                      SizedBox(height: size.height * 0.03),
-                      Center(
-                        child: Text(
-                          'Or ',
-                          style: textStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ),
-                      SizedBox(height: size.height * 0.03),
-                      SizedBox(
-                        width: double.infinity,
-                        child: OutlinedButton(
-                            onPressed: () {},
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 18,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                            ),
-                            child: const Image(
-                              height: 20,
-                              image: AssetImage('images/google.png'),
-                            )),
-                      ),
-                    ],
-                  )),
-                )
+                        SizedBox(height: size.height * 0.03),
+                        const SizedBox(
+                          width: double.infinity,
+                          child: CustomOutlineButton(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -46,7 +46,7 @@ TextStyle get textStyle {
 TextStyle get subtextStyle {
   return GoogleFonts.poppins(
       textStyle: TextStyle(
-          fontSize: 13,
+          fontSize: 14,
           fontWeight: FontWeight.w600,
           color: Get.isDarkMode ? defaultColor : nightColor));
 }

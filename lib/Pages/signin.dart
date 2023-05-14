@@ -1,71 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:toddle/utilities/colors.dart';
-import 'package:toddle/utilities/sizes.dart';
+import 'package:toddle/utilities/image.dart';
 import 'package:toddle/utilities/theme.dart';
-import 'package:toddle/widgets/login_form.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:toddle/widgets/custombutton.dart';
+import 'package:toddle/widgets/customoutlinebutton.dart';
+import 'package:toddle/widgets/textfield_signin_up.dart';
 
-import '../utilities/image.dart';
-
-class SignIn extends StatefulWidget {
+class SignIn extends StatelessWidget {
   const SignIn({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
-}
-
-class _SignInState extends State<SignIn> {
-  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-            child: Container(
-          color: defaultColor,
-          padding: const EdgeInsets.all(defaultSize),
-          child: Column(
-            children: [
-              Image(
-                image: const AssetImage(splashLogo),
-                height: size.height * 0.2,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const LoginForm(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Text('Or'),
-                  const SizedBox(height: 30.0 - 10),
-                  SizedBox(
-                    width: double.infinity,
-                    child: OutlinedButton.icon(
-                        icon: FaIcon(
-                          FontAwesomeIcons.google,
-                          color: nightColor,
-                          size: 20.0,
+          child: Container(
+            margin: EdgeInsets.only(top: size.height * 0.1),
+            padding: const EdgeInsets.all(18),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image(
+                  image: const AssetImage(splashLogo),
+                  height: size.height * 0.2,
+                ),
+                Text('Welcome to Toodle!', style: headingStyle),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Form(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const CustomTextField(
+                          hint: 'Email',
+                          label: 'Email',
+                          icon: Icons.email_outlined,
                         ),
-                        onPressed: () {},
-                        label: Text('Sign in with Google', style: textStyle)),
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text.rich(TextSpan(
-                          text: 'Already have an account?',
-                          style: textStyle,
-                          children: [
-                            TextSpan(
-                                text: ' Sign in',
+                        CustomTextField(
+                          hint: 'Password',
+                          label: 'Password',
+                          icon: Icons.fingerprint_outlined,
+                          suffixIcon: Icons.visibility_outlined,
+                          onPressed: () {},
+                        ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text('Forget Password?',
                                 style:
-                                    textStyle.copyWith(color: custombtnColor))
-                          ])))
-                ],
-              )
-            ],
+                                    textStyle.copyWith(color: custombtnColor)),
+                          ),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        CustomElevatedButton(
+                          label: 'Sign in',
+                          onPressed: () {},
+                        ),
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        Center(
+                          child: Text(
+                            'Or Continue with',
+                            style: textStyle.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.03,
+                        ),
+                        const SizedBox(
+                          width: double.infinity,
+                          child: CustomOutlineButton(),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        TextButton(
+                            onPressed: () {},
+                            child: Text.rich(TextSpan(
+                                text: 'Already have an account?',
+                                style: textStyle,
+                                children: [
+                                  TextSpan(
+                                      text: ' Sign in',
+                                      style: textStyle.copyWith(
+                                          color: custombtnColor))
+                                ])))
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
-        )),
+        ),
       ),
     );
   }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
 
@@ -20,14 +18,14 @@ class CustomElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          elevation: 2,
+          elevation: 0,
           backgroundColor: customAccentColor3,
           foregroundColor: nightColor,
           padding: const EdgeInsets.symmetric(
             vertical: 18,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(15),
           ),
         ),
         child: Text(
