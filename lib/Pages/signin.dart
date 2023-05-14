@@ -18,14 +18,14 @@ class SignIn extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(top: size.height * 0.1),
+            margin: EdgeInsets.only(top: size.height * 0.04),
             padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
                   image: const AssetImage(splashLogo),
-                  height: size.height * 0.2,
+                  height: size.height * 0.25,
                 ),
                 Text('Welcome to Toodle!', style: headingStyle),
                 Container(
@@ -50,18 +50,18 @@ class SignIn extends StatelessWidget {
                         SizedBox(
                           height: size.height * 0.02,
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('Forget Password?',
-                                style:
-                                    textStyle.copyWith(color: custombtnColor)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height * 0.02,
-                        ),
+                        // Align(
+                        //   alignment: Alignment.centerRight,
+                        //   child: TextButton(
+                        //     onPressed: () {},
+                        //     child: Text('Forget Password?',
+                        //         style:
+                        //             textStyle.copyWith(color: custombtnColor)),
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   height: size.height * 0.02,
+                        // ),
                         CustomElevatedButton(
                           label: 'Sign in',
                           onPressed: () {},
@@ -81,24 +81,44 @@ class SignIn extends StatelessWidget {
                         SizedBox(
                           height: size.height * 0.03,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           width: double.infinity,
-                          child: CustomOutlineButton(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              CustomOutlineButton(
+                                label: 'Facebook',
+                                imageAsset: 'images/icons8-facebook-24.png',
+                              ),
+                              CustomOutlineButton(
+                                label: 'Google',
+                                imageAsset: 'images/icons8-google-24.png',
+                              ),
+                              CustomOutlineButton(
+                                label: 'Twitter',
+                                imageAsset: 'images/icons8-twitter-24.png',
+                              )
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: size.height * 0.02,
                         ),
                         TextButton(
-                            onPressed: () {},
-                            child: Text.rich(TextSpan(
-                                text: 'Already have an account?',
-                                style: textStyle,
-                                children: [
-                                  TextSpan(
-                                      text: ' Sign in',
-                                      style: textStyle.copyWith(
-                                          color: custombtnColor))
-                                ])))
+                          onPressed: () {},
+                          child: Text.rich(
+                            TextSpan(
+                              text: 'Already have an account?',
+                              style: textStyle,
+                              children: [
+                                TextSpan(
+                                    text: ' Sign in',
+                                    style: textStyle.copyWith(
+                                        color: custombtnColor))
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

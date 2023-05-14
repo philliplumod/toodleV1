@@ -15,14 +15,14 @@ class SignUp extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(top: size.height * 0.1),
+            margin: EdgeInsets.only(top: size.height * 0.04),
             padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
                   image: const AssetImage(splashLogo),
-                  height: size.height * 0.2,
+                  height: size.height * 0.25,
                 ),
                 Text('Get On Board!', style: headingStyle),
                 Text('Your journey starts here.', style: textStyle),
@@ -64,9 +64,25 @@ class SignUp extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: size.height * 0.03),
-                        const SizedBox(
+                        SizedBox(
                           width: double.infinity,
-                          child: CustomOutlineButton(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              CustomOutlineButton(
+                                label: 'Facebook',
+                                imageAsset: 'images/icons8-facebook-24.png',
+                              ),
+                              CustomOutlineButton(
+                                label: 'Google',
+                                imageAsset: 'images/icons8-google-24.png',
+                              ),
+                              CustomOutlineButton(
+                                label: 'Twitter',
+                                imageAsset: 'images/icons8-twitter-24.png',
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
