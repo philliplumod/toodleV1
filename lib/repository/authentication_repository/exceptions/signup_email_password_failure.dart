@@ -8,6 +8,7 @@ class SignUpWithEmailAndPasswordFailure {
     switch (code) {
       case 'weak-password':
         return const SignUpWithEmailAndPasswordFailure(
+          
             'Please enter a Stronger password.');
       case 'invalid-email':
         return const SignUpWithEmailAndPasswordFailure(

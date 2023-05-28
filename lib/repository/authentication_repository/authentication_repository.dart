@@ -8,7 +8,7 @@ import 'package:toddle/repository/authentication_repository/exceptions/signup_em
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
-
+  SignUpWithEmailAndPasswordFailure failure = SignUpWithEmailAndPasswordFailure();
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
 
@@ -48,10 +48,10 @@ class AuthenticationRepository extends GetxController {
       String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      Get.snackbar('Error signing in', e.message!,
+    } on FirebaseAuthException catch (failure) {
+      Get.snackbar('Error signing in', failure.message!,
           snackPosition: SnackPosition.BOTTOM);
-      e.code;
+      failure.code;
     } catch (_) {}
   }
 
