@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             selectedDate = date;
           });
         },
-        height: MediaQuery.of(context).size.height * 0.1,
+        height: MediaQuery.of(context).size.height * 0.095,
       ),
     );
   }
