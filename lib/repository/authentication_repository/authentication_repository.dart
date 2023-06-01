@@ -13,10 +13,9 @@ class AuthenticationRepository extends GetxController {
 
   //Variables
   final _auth = FirebaseAuth.instance;
-  
+
   late final Rx<User?> firebaseUser;
 
-  //Will be load when app launches this func will be called and set the firebaseUser state
   @override
   void onReady() {
     firebaseUser = Rx<User?>(_auth.currentUser);
@@ -24,8 +23,6 @@ class AuthenticationRepository extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
-  /// If we are setting initial screen from here
-  /// then in the main.dart => App() add CircularProgressIndicator()
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const SignUp())
@@ -39,10 +36,11 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const SignIn())
+          ? Get.offAll(() => const SignIn(), transition: Transition.fadeIn)
           : Get.to(() => const MyWrapper());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
+      Get.snackbar('Error', ex.message);
       debugPrint(ex.message);
       return ex.message;
     } catch (_) {
@@ -58,10 +56,9 @@ class AuthenticationRepository extends GetxController {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       final ex = SignInWithEmailAndPasswordFailure.fromCode(e.code);
+      Get.snackbar("Login Error", ex.message);
       debugPrint(ex.message);
       return ex.message;
-      // final ex = LogInWithEmailAndPasswordFailure.fromCode(e.code);
-      // return ex.message;
     } catch (_) {
       const ex = SignInWithEmailAndPasswordFailure();
       return ex.message;

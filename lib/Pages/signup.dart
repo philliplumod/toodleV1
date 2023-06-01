@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:toddle/Pages/signin.dart';
 import 'package:toddle/controllers/signup_controller.dart';
+import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/image.dart';
 import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/custombutton.dart';
@@ -23,14 +25,13 @@ class SignUp extends StatelessWidget {
         child: Scaffold(
           body: SingleChildScrollView(
             child: Container(
-              margin: EdgeInsets.only(top: screenHeight * 0.04),
               padding: const EdgeInsets.all(18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image(
                     image: const AssetImage(splashLogo),
-                    height: screenHeight * 0.25,
+                    height: screenHeight * 0.20,
                   ),
                   Text('Get On Board!', style: headingStyle),
                   Text('Your journey starts here.', style: textStyle),
@@ -102,10 +103,27 @@ class SignUp extends StatelessWidget {
                         CustomOutlineButton(
                           label: 'Twitter',
                           imageAsset: 'images/icons8-twitter-24.png',
-                        )
+                        ),
                       ],
                     ),
                   ),
+                  SizedBox(height: screenHeight * 0.02),
+                  TextButton(
+                    onPressed: ()  {
+                       Get.to(() => const SignIn(), transition: Transition.fadeIn);
+                    },
+                    child: Text.rich(
+                      TextSpan(
+                        text: 'Already have an account?',
+                        style: textStyle,
+                        children: [
+                          TextSpan(
+                              text: ' Sign in',
+                              style: textStyle.copyWith(color: custombtnColor))
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
