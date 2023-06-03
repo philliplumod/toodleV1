@@ -11,7 +11,6 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // ignore: avoid_returning_null_for_void
       onTap: onTap,
       child: Container(
           width: 120,
@@ -20,10 +19,13 @@ class CustomButton extends StatelessWidget {
             color: custombtnColor,
             borderRadius: BorderRadius.circular(18),
           ),
-          child: Text(
-            label,
-            style: textStyle.copyWith(color: defaultColor),
+          child: Center(
+            child: Text(
+              label,
+              style: textStyle.copyWith(color: defaultColor),
+            ),
           )),
     );
   }
 }
+

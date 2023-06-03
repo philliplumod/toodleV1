@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/models/task.dart';
 import 'package:toddle/utilities/theme.dart';
@@ -236,16 +237,14 @@ class _AddTaskState extends State<AddTask> {
       key: UniqueKey(),
       elevation: 0,
       backgroundColor: context.theme.colorScheme.background,
-      leading: GestureDetector(
-        onTap: () {
-          Get.back();
-        },
-        child: Icon(
-          Icons.arrow_back_ios_new_rounded,
-          color: Get.isDarkMode ? defaultColor : nightColor,
-          size: 20,
-        ),
-      ),
+      leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            LineAwesomeIcons.angle_left,
+            color: Get.isDarkMode ? defaultColor : nightColor,
+          )),
       actions: const [
         CircleAvatar(
           backgroundImage: AssetImage("images/man.png"),

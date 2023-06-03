@@ -19,7 +19,6 @@ class SignIn extends StatelessWidget {
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      // final screenWidth = constraints.maxWidth;
       final screenHeight = constraints.maxHeight;
       return SafeArea(
         child: Scaffold(
@@ -61,6 +60,7 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
+                    width: double.infinity,
                     label: 'Sign up',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
@@ -103,8 +103,9 @@ class SignIn extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   TextButton(
-                    onPressed: ()  {
-                       Get.to(() => const SignUp(), transition: Transition.fadeIn);
+                    onPressed: () {
+                      Get.to(() => const SignUp(),
+                          transition: Transition.fadeIn);
                     },
                     child: Text.rich(
                       TextSpan(

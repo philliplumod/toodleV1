@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/models/task.dart';
 import 'package:toddle/services/notify_helper.dart';
@@ -108,18 +109,15 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       elevation: 0,
       backgroundColor: context.theme.colorScheme.background,
-      leading: GestureDetector(
-        onTap: () {
-          ThemeService().changeTheme();
-          //  PopService().showThemeChangeMessage();
-          NotificationService().scheduledNotification();
-        },
-        child: Icon(
-          Get.isDarkMode ? Icons.wb_sunny_rounded : Icons.nightlight_round,
-          color: Get.isDarkMode ? defaultColor : nightColor,
-          size: 20,
-        ),
-      ),
+      leading: IconButton(
+          onPressed: () {
+            ThemeService().changeTheme();
+            NotificationService().scheduledNotification();
+          },
+          icon: Icon(
+            Get.isDarkMode ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
+            color: Get.isDarkMode ? defaultColor : nightColor,
+          )),
       actions: const [
         CircleAvatar(
           backgroundImage: AssetImage("images/man.png"),

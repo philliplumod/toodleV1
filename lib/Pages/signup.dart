@@ -67,6 +67,7 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
+                    width: double.infinity,
                     label: 'Sign up',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
