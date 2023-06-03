@@ -11,7 +11,6 @@ import 'exceptions/signup_email_password_failure.dart';
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
-  //Variables
   final _auth = FirebaseAuth.instance;
 
   late final Rx<User?> firebaseUser;
@@ -26,10 +25,9 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const SignUp())
-        : Get.offAll(() => const SignIn());
+        : Get.offAll(() => const MyWrapper());
   }
 
-  //FUNC
   Future<String?> createUserWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -62,8 +60,7 @@ class AuthenticationRepository extends GetxController {
     } catch (_) {
       const ex = SignInWithEmailAndPasswordFailure();
       return ex.message;
-      // const ex = LogInWithEmailAndPasswordFailure();
-      // return ex.message;
+
     }
     return null;
   }
