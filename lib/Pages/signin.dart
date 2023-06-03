@@ -61,6 +61,8 @@ class SignIn extends StatelessWidget {
                   SizedBox(height: screenHeight * 0.03),
                   CustomElevatedButton(
                     width: double.infinity,
+                    textColor: nightColor,
+                    color: customAccentColor3,
                     label: 'Sign up',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {

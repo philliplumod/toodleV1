@@ -66,6 +66,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontSize: 12, fontWeight: FontWeight.normal)),
               const SizedBox(height: 15),
               CustomElevatedButton(
+                textColor: nightColor,
+                color: customAccentColor3,
                 label: 'Edit Profile',
                 onPressed: () {
                   Get.to(() => const EditProfile());

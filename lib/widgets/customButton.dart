@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/theme.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -8,13 +6,17 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double? width;
   final double? radius;
-  const CustomElevatedButton({
-    Key? key,
-    required this.label,
-    this.width,
-    this.radius,
-    required this.onPressed,
-  }) : super(key: key);
+  final Color? color;
+  final Color? textColor;
+  const CustomElevatedButton(
+      {Key? key,
+      required this.label,
+      required this.onPressed,
+      this.width,
+      this.radius,
+      this.color,
+      this.textColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: customAccentColor3,
-          foregroundColor: nightColor,
+          backgroundColor: color,
           padding: const EdgeInsets.symmetric(
             vertical: 18,
           ),
@@ -36,7 +37,7 @@ class CustomElevatedButton extends StatelessWidget {
         child: Text(
           label,
           style: textStyle.copyWith(
-            color: nightColor,
+            color: textColor,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),

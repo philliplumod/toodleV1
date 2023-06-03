@@ -5,7 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/models/task.dart';
 import 'package:toddle/utilities/theme.dart';
-import 'package:toddle/widgets/button.dart';
+import 'package:toddle/widgets/custombutton.dart';
 
 import '../utilities/colors.dart';
 import '../widgets/text_field.dart';
@@ -161,11 +161,22 @@ class _AddTaskState extends State<AddTask> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _colorSelect(),
-                  CustomButton(
-                      label: "Create Task ",
-                      onTap: () {
+
+                  CustomElevatedButton(
+                      label: 'Create Task',
+                      onPressed: () {
                         _validateDate();
-                      })
+                      },
+                      width: 150,
+                      color: custombtnColor,
+                      textColor: defaultColor,
+                      )
+
+                  // CustomButton(
+                  //     label: "Create Task ",
+                  //     onTap: () {
+                  //       _validateDate();
+                  //     })
                 ],
               )
             ],

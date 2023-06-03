@@ -95,6 +95,8 @@ class _EditProfileState extends State<EditProfile> {
                 SizedBox(height: screenHeight * 0.03),
                 CustomElevatedButton(
                   label: 'Edit Profile',
+                  color: customAccentColor3,
+                  textColor: nightColor,
                   onPressed: () {
                     Get.to(() => const EditProfile());
                   },
@@ -103,6 +105,7 @@ class _EditProfileState extends State<EditProfile> {
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text.rich(
                       TextSpan(
@@ -112,7 +115,13 @@ class _EditProfileState extends State<EditProfile> {
                           children: [
                             TextSpan(text: ' 31 October 2021', style: textStyle)
                           ]),
-                    )
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Logout',
+                          style: textStyle,
+                        ))
                   ],
                 )
               ],
