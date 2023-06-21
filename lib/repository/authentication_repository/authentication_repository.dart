@@ -9,9 +9,7 @@ import 'package:toddle/repository/authentication_repository/exceptions/signup_em
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
-
   final _auth = FirebaseAuth.instance;
-
   late final Rx<User?> firebaseUser;
 
   @override
@@ -21,8 +19,8 @@ class AuthenticationRepository extends GetxController {
     ever(firebaseUser, _setInitialScreen);
   }
 
-  void _setInitialScreen(User? user) {
-    if (user == null) {
+  void _setInitialScreen(User? users) {
+    if (users == null) {
       Get.offAll(() => const SignUp());
     } else {
       Get.offAll(() => const MyWrapper());
@@ -64,5 +62,9 @@ class AuthenticationRepository extends GetxController {
     return null;
   }
 
-  Future<void> logout() async => await _auth.signOut();
+  Future<void> logout() async {
+    await _auth.signOut();
+    Get.offAll(() => const SignIn(), transition: Transition.fadeIn);
+    debugPrint('User logged out');
+  }
 }

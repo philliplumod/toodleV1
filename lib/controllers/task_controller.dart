@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_overrides
-
 import 'package:get/get.dart';
 import 'package:toddle/db/db_helper.dart';
 import 'package:flutter/material.dart';

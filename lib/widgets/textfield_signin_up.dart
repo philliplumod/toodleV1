@@ -11,8 +11,11 @@ class CustomTextField extends StatelessWidget {
   final IconData? icon;
   final IconData? suffixIcon;
   final VoidCallback? onPressed;
+  final String? initialValue;
+
   const CustomTextField({
     Key? key,
+    this.initialValue,
     this.icon,
     this.hint,
     this.label,
@@ -26,6 +29,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       child: TextFormField(
+        initialValue: initialValue,
         controller: controller,
         style: subtextStyle,
         decoration: InputDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:toddle/Pages/signin.dart';
 import 'package:toddle/controllers/signup_controller.dart';
+import 'package:toddle/models/user_model.dart';
 import 'package:toddle/utilities/colors.dart';
 import 'package:toddle/utilities/image.dart';
 import 'package:toddle/utilities/theme.dart';
@@ -72,10 +73,42 @@ class SignUp extends StatelessWidget {
                     textColor: nightColor,
                     label: 'Sign up',
                     onPressed: () {
+                      // if (formKey.currentState!.validate()) {
+                      //   final user = UserModel(
+                      //     fullName: controller.fullName.text.trim(),
+                      //     email: controller.email.text.trim(),
+                      //     password: controller.password.text.trim(),
+                      //   );
+                      //   SignUpController.instance.registerUser(
+                      //       controller.email.text.trim(),
+                      //       controller.password.text.trim());
+                      // }
+
+                      /// version 1
+                      // if (formKey.currentState!.validate()) {
+                      //   final user = UserModel(
+                      //     fullName: controller.fullName.text.trim(),
+                      //     email: controller.email.text.trim(),
+                      //     password: controller.password.text.trim(),
+                      //   );
+
+                      //   SignUpController.instance.registerUser(
+                      //     user.email,
+                      //     user.password,
+                      //   );
+
+                      //   SignUpController.instance.createUser(user);
+                      // }
+
+                      /// version2
                       if (formKey.currentState!.validate()) {
-                        SignUpController.instance.registerUser(
-                            controller.email.text.trim(),
-                            controller.password.text.trim());
+                        final user = UserModel(
+                          fullName: controller.fullName.text.trim(),
+                          email: controller.email.text.trim(),
+                          password: controller.password.text.trim(),
+                        );
+
+                        SignUpController.instance.registerUser(user);
                       }
                     },
                   ),
@@ -112,8 +145,9 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   TextButton(
-                    onPressed: ()  {
-                       Get.to(() => const SignIn(), transition: Transition.fadeIn);
+                    onPressed: () {
+                      Get.to(() => const SignIn(),
+                          transition: Transition.fadeIn);
                     },
                     child: Text.rich(
                       TextSpan(

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:sqflite/sqflite.dart';
-
 import '../models/task.dart';
 
 class DBHelper {
@@ -25,14 +24,6 @@ class DBHelper {
       print(e);
     }
   }
-
-  // static Future insert(Map<String, dynamic> data) async {
-  //   try {
-  //     await _db!.insert(_tableName, data);
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
 
   static Future<int> insert(Task? task) async {
     print("inserting task");
