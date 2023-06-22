@@ -126,117 +126,113 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _showTask() {
-    return Expanded(child: Obx(() {
-      return ListView.builder(
-          itemCount: _taskController.taskList.length,
-          itemBuilder: (BuildContext context, index) {
-            debugPrint(_taskController.taskList.length.toString());
-            Task task = _taskController.taskList[index];
-            debugPrint(task.toString());
-            if (task.repeat == 'Daily') {
-              DateTime date = DateFormat.jm().parse(task.startTime.toString());
-              var time = DateFormat("HH:mm").format(date);
-              NotificationService().scheduledTaskNotification(
-                  int.parse(time.toString().split(":")[0]),
-                  int.parse(time.toString().split(":")[1]),
-                  task);
+_showTask() {
+  return Expanded(child: Obx(() {
+    return ListView.builder(
+        itemCount: _taskController.taskList.length,
+        itemBuilder: (BuildContext context, index) {
+          debugPrint(_taskController.taskList.length.toString());
+          Task task = _taskController.taskList[index];
+          debugPrint(task.toString());
+          if (task.repeat == 'Daily') {
+            DateTime date = DateFormat.jm().parse(task.startTime.toString());
+            var time = DateFormat("HH:mm").format(date);
+            NotificationService().scheduledTaskNotification(
+                int.parse(time.toString().split(":")[0]),
+                int.parse(time.toString().split(":")[1]),
+                task);
 
-              return AnimationConfiguration.staggeredList(
-                  position: index,
-                  child: SlideAnimation(
-                      child: FadeInAnimation(
-                          child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _showBottomSheet(context, task);
-                          //task);
-                        },
-                        child: TaskTile(task),
-                      )
-                    ],
-                  ))));
-            }
-            if (task.date == DateFormat.yMd().format(selectedDate)) {
-              return AnimationConfiguration.staggeredList(
-                  position: index,
-                  child: SlideAnimation(
-                      child: FadeInAnimation(
-                          child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          _showBottomSheet(context, task);
-                          //task);
-                        },
-                        child: TaskTile(task),
-                      )
-                    ],
-                  ))));
-            } else {
-              return const SizedBox();
-            }
-          });
-    }));
-  }
+            return AnimationConfiguration.staggeredList(
+                position: index,
+                child: SlideAnimation(
+                    child: FadeInAnimation(
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                _showBottomSheet(context, task);
+                              },
+                              child: TaskTile(task),
+                            )
+                          ],
+                        ))));
+          }
+          if (task.date == DateFormat.yMd().format(selectedDate)) {
+            return AnimationConfiguration.staggeredList(
+                position: index,
+                child: SlideAnimation(
+                    child: FadeInAnimation(
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                _showBottomSheet(context, task);
+                              },
+                              child: TaskTile(task),
+                            )
+                          ],
+                        ))));
+          } else {
+            return const SizedBox();
+          }
+        });
+  }));
+}
 
-  _showBottomSheet(BuildContext context, Task task) {
-    double bottomSheetHeight = task.isCompleted == 1
-        ? MediaQuery.of(context).size.height * 0.24
-        : MediaQuery.of(context).size.height * 0.32;
 
-    Get.bottomSheet(
-      Container(
-        padding: const EdgeInsets.only(top: 4),
-        margin: const EdgeInsets.only(top: 10),
-        height: bottomSheetHeight,
-        color: Get.isDarkMode ? defaultColor : nightColor,
-        child: Column(
-          
-          children: [
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              height: 6,
-              width: 120,
-              decoration: BoxDecoration(
-                  color: Get.isDarkMode
-                      ? nightColor.withOpacity(0.1)
-                      : defaultColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(10)),
-            ),
-            const Spacer(),
-            task.isCompleted == 1
-                ? Container()
-                : _bottomSheetButton(
-                    label: "Task Completed",
-                    onTap: () {
-                      setState(() {
-                        _taskController.taskCompleted(task.id!);
-                      });
-                      Get.back();
-                    },
-                    clr: custombtnColor,
-                    context: context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            _bottomSheetButton(
-                label: "Delete Task",
-                onTap: () {
-                  setState(() {
-                    _taskController.delete(task);
-                    _taskController.getTask();
-                  });
-                  Get.back();
-                },
-                clr: custombtnColor,
-                context: context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          ],
-        ),
+_showBottomSheet(BuildContext context, Task task) {
+  double bottomSheetHeight = task.isCompleted == 1
+      ? MediaQuery.of(context).size.height * 0.24
+      : MediaQuery.of(context).size.height * 0.32;
+
+  Get.bottomSheet(
+    Container(
+      padding: const EdgeInsets.only(top: 4),
+      margin: const EdgeInsets.only(top: 10),
+      height: bottomSheetHeight,
+      color: Get.isDarkMode ? defaultColor : nightColor,
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            height: 6,
+            width: 120,
+            decoration: BoxDecoration(
+                color: Get.isDarkMode
+                    ? nightColor.withOpacity(0.1)
+                    : defaultColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10)),
+          ),
+          const Spacer(),
+          task.isCompleted == 1
+              ? Container()
+              : _bottomSheetButton(
+                  label: "Task Completed",
+                  onTap: () {
+                    setState(() {
+                      _taskController.taskCompleted(task.id!);
+                    });
+                    Get.back();
+                  },
+                  clr: custombtnColor,
+                  context: context),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          _bottomSheetButton(
+              label: "Delete Task",
+              onTap: () {
+                setState(() {
+                  _taskController.delete(task);
+                });
+                Get.back();
+              },
+              clr: custombtnColor,
+              context: context),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+        ],
       ),
-    );
-  }
-
+    ),
+  );
+}
   _bottomSheetButton(
       {required String label,
       required Function()? onTap,

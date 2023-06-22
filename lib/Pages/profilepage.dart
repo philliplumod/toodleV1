@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toddle/Pages/editprofile.dart';
 import 'package:toddle/controllers/profile_controller.dart';
+import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/services/notify_helper.dart';
 import 'package:toddle/services/theme_services.dart';
 import 'package:toddle/utilities/colors.dart';
@@ -18,11 +19,13 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final ProfileController _profileController = Get.find();
+  final TaskController _taskController = Get.find();
 
   @override
   void initState() {
     super.initState();
     _fetchUserData();
+    _taskController.getRecentCompletedTasks();
   }
 
   void _fetchUserData() async {
@@ -97,18 +100,28 @@ class _ProfilePageState extends State<ProfilePage> {
                 textColor: nightColor,
                 color: customAccentColor3,
                 label: 'Edit Profile',
-                onPressed: () async{
+                onPressed: () async {
                   await Get.to(() => const EditProfile());
                 },
                 width: size.width * 0.6,
                 radius: 20,
               ),
               const Divider(),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: 400,
-                color: Colors.amber,
-              ),
+                child: Obx(() => ListView.builder(
+                      itemCount: _taskController.recentCompletedTasks.length,
+                      itemBuilder: (context, index) {
+                        final task =
+                            _taskController.recentCompletedTasks[index];
+                        return ListTile(
+                          title: Text(task.title ?? 'No Title'),
+                          subtitle: Text('Completed on ${task.date}'),
+                        );
+                      },
+                    )),
+              )
             ],
           ),
         ),
@@ -119,8 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
   AppBar _appBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: customAccentColor1,
-      // backgroundColor: context.theme.colorScheme.background,
+      backgroundColor: context.theme.colorScheme.background,
       title: Text('Profile', style: headingStyle),
       centerTitle: true,
       actions: [
