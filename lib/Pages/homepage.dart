@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // notifyHelper = NotificationService();
     _taskController.getTask();
   }
 
@@ -190,9 +189,11 @@ class _HomePageState extends State<HomePage> {
     Get.bottomSheet(
       Container(
         padding: const EdgeInsets.only(top: 4),
+        margin: const EdgeInsets.only(top: 10),
         height: bottomSheetHeight,
         color: Get.isDarkMode ? defaultColor : nightColor,
         child: Column(
+          
           children: [
             Container(
               margin: const EdgeInsets.only(top: 10),
@@ -215,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                       });
                       Get.back();
                     },
-                    clr: customAccentColor1,
+                    clr: custombtnColor,
                     context: context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             _bottomSheetButton(
@@ -229,15 +230,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 clr: custombtnColor,
                 context: context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-            _bottomSheetButton(
-                label: "Close",
-                isClose: true,
-                onTap: () {
-                  Get.back();
-                },
-                clr: defaultColor,
-                context: context)
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ],
         ),
       ),
@@ -275,8 +268,7 @@ class _HomePageState extends State<HomePage> {
         child: Center(
             child: Text(
           label,
-          style: subHeadingStyle.copyWith(
-              fontSize: 15, color: Get.isDarkMode ? nightColor : defaultColor),
+          style: subHeadingStyle.copyWith(fontSize: 13, color: defaultColor),
         )),
       ),
     );

@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:toddle/Pages/signup.dart';
 
 import '../controllers/signin_controller.dart';
 import '../utilities/colors.dart';
 import '../utilities/image.dart';
 import '../utilities/theme.dart';
-import '../widgets/customButton.dart';
+import '../widgets/custombutton.dart';
 import '../widgets/customoutlinebutton.dart';
 import '../widgets/textfield_signin_up.dart';
 

@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: _appBar(),
       backgroundColor: Get.isDarkMode ? nightColor : defaultColor,
       body: Container(
-        margin: EdgeInsets.only(top: size.height * 0.05, left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -119,7 +119,8 @@ class _ProfilePageState extends State<ProfilePage> {
   AppBar _appBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: context.theme.colorScheme.background,
+      backgroundColor: customAccentColor1,
+      // backgroundColor: context.theme.colorScheme.background,
       title: Text('Profile', style: headingStyle),
       centerTitle: true,
       actions: [
