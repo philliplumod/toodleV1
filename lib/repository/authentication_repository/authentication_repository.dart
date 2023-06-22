@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:toddle/Pages/signin.dart';
-import 'package:toddle/Pages/signup.dart';
-import 'package:toddle/Pages/wrapper.dart';
+import 'package:toddle/pages/signin.dart';
+import 'package:toddle/pages/signup.dart';
+import 'package:toddle/pages/wrapper.dart';
 import 'package:toddle/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 import 'package:toddle/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 

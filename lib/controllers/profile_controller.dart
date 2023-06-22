@@ -11,6 +11,8 @@ class ProfileController extends GetxController {
   final _authRepo = Get.put(AuthenticationRepository());
   final _userRepo = Get.put(UserRepository());
 
+RxString fullName = ''.obs;
+RxString email = ''.obs;
 
 Future<UserModel?> getUserData() async {
   final email = _authRepo.firebaseUser.value?.email;

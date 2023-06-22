@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -14,12 +13,12 @@ class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
 
   @override
-  _EditProfileState createState() => _EditProfileState();
+  EditProfileState createState() => EditProfileState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class EditProfileState extends State<EditProfile> {
   final controller = Get.put(ProfileController());
-    final _authRepo = Get.put(AuthenticationRepository());
+  final _authRepo = Get.put(AuthenticationRepository());
 
   final formKey = GlobalKey<FormState>();
 
@@ -39,7 +38,7 @@ class _EditProfileState extends State<EditProfile> {
                     color: Colors.red,
                   ),
                 );
-              } 
+              }
               UserModel? userData = snapshot.data;
               return Column(
                 children: [
@@ -209,21 +208,7 @@ class _EditProfileState extends State<EditProfile> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text.rich(
-                        TextSpan(
-                          text: 'Joined',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' 31 October 2021',
-                              style: textStyle,
-                            ),
-                          ],
-                        ),
-                      ),
+                      const SizedBox(),
                       TextButton(
                         onPressed: () {
                           _authRepo.logout();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:toddle/Pages/editprofile.dart';
+import 'package:toddle/controllers/profile_controller.dart';
 import 'package:toddle/services/notify_helper.dart';
 import 'package:toddle/services/theme_services.dart';
 import 'package:toddle/utilities/colors.dart';
@@ -9,13 +10,31 @@ import 'package:toddle/utilities/theme.dart';
 import 'package:toddle/widgets/custombutton.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final ProfileController _profileController = Get.find();
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  void _fetchUserData() async {
+    final userData = await _profileController.getUserData();
+    if (userData != null) {
+      setState(() {
+        _profileController.fullName.value = userData.fullName;
+        _profileController.email.value = userData.email;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -34,10 +53,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 120,
                       height: 120,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: const Image(
-                            image: AssetImage("images/man.png"),
-                          )),
+                        borderRadius: BorderRadius.circular(100),
+                        child: const Image(
+                          image: AssetImage("images/man.png"),
+                        ),
+                      ),
                     ),
                     Positioned(
                       bottom: 0,
@@ -46,31 +66,39 @@ class _ProfilePageState extends State<ProfilePage> {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.amber),
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.amber,
+                        ),
                         child: Icon(
                           LineAwesomeIcons.pen,
                           size: 18,
                           color: nightColor,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 15),
-              Text('John Doe', style: headingStyle),
+              Obx(() => Text(
+                    _profileController.fullName.value,
+                    style: headingStyle,
+                  )),
               const SizedBox(height: 15),
-              Text('JohnDoe@gmail.com',
-                  style: textStyle.copyWith(
-                      fontSize: 12, fontWeight: FontWeight.normal)),
+              Obx(() => Text(
+                    _profileController.email.value,
+                    style: textStyle.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )),
               const SizedBox(height: 15),
               CustomElevatedButton(
                 textColor: nightColor,
                 color: customAccentColor3,
                 label: 'Edit Profile',
-                onPressed: () {
-                  Get.to(() => const EditProfile());
+                onPressed: () async{
+                  await Get.to(() => const EditProfile());
                 },
                 width: size.width * 0.6,
                 radius: 20,
@@ -80,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 width: double.infinity,
                 height: 400,
                 color: Colors.amber,
-              )
+              ),
             ],
           ),
         ),
@@ -88,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  _appBar() {
+  AppBar _appBar() {
     return AppBar(
       elevation: 0,
       backgroundColor: context.theme.colorScheme.background,
@@ -96,15 +124,16 @@ class _ProfilePageState extends State<ProfilePage> {
       centerTitle: true,
       actions: [
         IconButton(
-            onPressed: () {
-              ThemeService().changeTheme();
-              NotificationService().scheduledNotification();
-            },
-            icon: Icon(
-              Get.isDarkMode ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
-              color: Get.isDarkMode ? defaultColor : nightColor,
-              size: 20,
-            ))
+          onPressed: () {
+            ThemeService().changeTheme();
+            NotificationService().scheduledNotification();
+          },
+          icon: Icon(
+            Get.isDarkMode ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
+            color: Get.isDarkMode ? defaultColor : nightColor,
+            size: 20,
+          ),
+        ),
       ],
     );
   }

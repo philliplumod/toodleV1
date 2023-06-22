@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:toddle/utilities/theme.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../utilities/colors.dart';
+import '../utilities/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../utilities/colors.dart';
+import '../utilities/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hint;
@@ -12,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   final IconData? suffixIcon;
   final VoidCallback? onPressed;
   final String? initialValue;
+  final bool obscureText;
 
   const CustomTextField({
     Key? key,
@@ -22,6 +29,7 @@ class CustomTextField extends StatelessWidget {
     this.onPressed,
     this.suffixIcon,
     this.controller,
+    this.obscureText = false, // Default value is set to false
   }) : super(key: key);
 
   @override
@@ -31,6 +39,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         initialValue: initialValue,
         controller: controller,
+        obscureText: obscureText, // Pass the value to the TextFormField
         style: subtextStyle,
         decoration: InputDecoration(
           prefixIcon: Icon(
@@ -39,25 +48,37 @@ class CustomTextField extends StatelessWidget {
             size: 20,
           ),
           suffixIcon: IconButton(
-              onPressed: onPressed,
-              icon: Icon(suffixIcon,
-                  color: Get.isDarkMode ? defaultColor : nightColor, size: 20)),
+            onPressed: onPressed,
+            icon: Icon(
+              suffixIcon,
+              color: Get.isDarkMode ? defaultColor : nightColor,
+              size: 20,
+            ),
+          ),
           hintText: hint,
           labelText: label,
           labelStyle: subtextStyle,
           hintStyle: subtextStyle,
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(
-                  color: Get.isDarkMode ? defaultColor : nightColor, width: 1)),
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              color: Get.isDarkMode ? defaultColor : nightColor,
+              width: 1,
+            ),
+          ),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide(
-                  color: Get.isDarkMode ? defaultColor : nightColor, width: 1)),
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              color: Get.isDarkMode ? defaultColor : nightColor,
+              width: 1,
+            ),
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide(
-                color: Get.isDarkMode ? defaultColor : nightColor, width: 1),
+              color: Get.isDarkMode ? defaultColor : nightColor,
+              width: 1,
+            ),
           ),
         ),
       ),

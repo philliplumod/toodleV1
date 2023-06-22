@@ -7,14 +7,17 @@ import 'package:toddle/db/db_helper.dart';
 import 'package:toddle/firebase_options.dart';
 import 'package:toddle/repository/authentication_repository/authentication_repository.dart';
 import 'package:toddle/services/notify_helper.dart';
-import 'package:toddle/Pages/splashscreen.dart';
+import 'package:toddle/pages/splashscreen.dart';
 import 'package:toddle/utilities/theme.dart';
+
+import 'controllers/profile_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
   NotificationService().initNotification();
+  Get.put(ProfileController());
   await DBHelper.initDb();
   await GetStorage.init();
 

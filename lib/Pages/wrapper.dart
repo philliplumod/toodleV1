@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:toddle/Pages/homepage.dart';
-import 'package:toddle/Pages/profilepage.dart';
-import 'package:toddle/Pages/taskbar.dart';
+import 'package:toddle/pages/homepage.dart';
+import 'package:toddle/pages/profilepage.dart';
+import 'package:toddle/pages/taskbar.dart';
 import 'package:toddle/controllers/task_controller.dart';
 import 'package:toddle/controllers/wrapper_controller.dart';
 import 'package:toddle/utilities/colors.dart';

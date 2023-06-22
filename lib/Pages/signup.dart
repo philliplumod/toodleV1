@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:toddle/Pages/signin.dart';
+import 'package:toddle/pages/signin.dart';
 import 'package:toddle/controllers/signup_controller.dart';
 import 'package:toddle/models/user_model.dart';
 import 'package:toddle/utilities/colors.dart';
