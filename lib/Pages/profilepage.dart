@@ -27,16 +27,16 @@ class _ProfilePageState extends State<ProfilePage> {
     _fetchUserData();
     _taskController.getRecentCompletedTasks();
   }
-
-  void _fetchUserData() async {
-    final userData = await _profileController.getUserData();
-    if (userData != null) {
-      setState(() {
-        _profileController.fullName.value = userData.fullName;
-        _profileController.email.value = userData.email;
-      });
-    }
+void _fetchUserData() async {
+  final userData = await _profileController.getUserData();
+  if (userData != null) {
+    setState(() {
+      _profileController.fullName.value = userData.fullName;
+      _profileController.email.value = userData.email;
+    });
   }
+}
+
 
   @override
   Widget build(BuildContext context) {

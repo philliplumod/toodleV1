@@ -10,16 +10,18 @@ class ProfileController extends GetxController {
   final _authRepo = Get.put(AuthenticationRepository());
   final _userRepo = Get.put(UserRepository());
 
-RxString fullName = ''.obs;
-RxString email = ''.obs;
+  RxString fullName = ''.obs;
+  RxString email = ''.obs;
 
 Future<UserModel?> getUserData() async {
-  final email = _authRepo.firebaseUser.value?.email;
-  if (email != null) {
-    debugPrint('Fetching user data for email: $email');
-    final userData = await _userRepo.getUserDetails(email);
+  final emailValue = _authRepo.firebaseUser.value?.email;
+  if (emailValue != null) {
+    debugPrint('Fetching user data for email: $emailValue');
+    final userData = await _userRepo.getUserDetails(emailValue);
     if (userData != null) {
       debugPrint('User data: $userData');
+      fullName.value = userData.fullName;
+      email.value = userData.email;
       return userData;
     } else {
       debugPrint('User data snapshot is null');

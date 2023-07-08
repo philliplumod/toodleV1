@@ -17,10 +17,26 @@ class EditProfile extends StatefulWidget {
 }
 
 class EditProfileState extends State<EditProfile> {
-  final controller = Get.put(ProfileController());
-  final _authRepo = Get.put(AuthenticationRepository());
+  final ProfileController _profileController = Get.find();
+  final AuthenticationRepository _authRepo = Get.find();
 
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserData();
+  }
+
+  void _fetchUserData() async {
+    final userData = await _profileController.getUserData();
+    if (userData != null) {
+      setState(() {
+        _profileController.fullName.value = userData.fullName;
+        _profileController.email.value = userData.email;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +45,8 @@ class EditProfileState extends State<EditProfile> {
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.only(top: 0.05, left: 20, right: 20),
-          child: FutureBuilder<UserModel?>(
-            future: controller.getUserData(), // Await the getUserData method
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.red,
-                  ),
-                );
-              }
-              UserModel? userData = snapshot.data;
+          child: GetBuilder<ProfileController>(
+            builder: (_) {
               return Column(
                 children: [
                   Center(
@@ -83,7 +90,7 @@ class EditProfileState extends State<EditProfile> {
                         children: [
                           const SizedBox(height: 18),
                           TextFormField(
-                            initialValue: userData?.fullName,
+                            initialValue: _profileController.fullName.value,
                             style: subtextStyle,
                             decoration: InputDecoration(
                               labelStyle: subtextStyle,
@@ -119,7 +126,7 @@ class EditProfileState extends State<EditProfile> {
                           ),
                           const SizedBox(height: 18),
                           TextFormField(
-                            initialValue: userData?.email,
+                            initialValue: _profileController.email.value,
                             style: subtextStyle,
                             decoration: InputDecoration(
                               labelStyle: subtextStyle,
@@ -155,7 +162,7 @@ class EditProfileState extends State<EditProfile> {
                           ),
                           const SizedBox(height: 18),
                           TextFormField(
-                            initialValue: userData?.password,
+                            initialValue: '', // Set the initial value for the password field
                             style: subtextStyle,
                             decoration: InputDecoration(
                               labelStyle: subtextStyle,
@@ -199,7 +206,7 @@ class EditProfileState extends State<EditProfile> {
                     color: customAccentColor3,
                     textColor: nightColor,
                     onPressed: () {
-                      Get.to(() => const EditProfile());
+                      // Handle the edit profile logic here
                     },
                     radius: 20,
                     width: double.infinity,

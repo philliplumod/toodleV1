@@ -23,30 +23,30 @@ class UserRepository extends GetxController {
     });
   }
 
-Future<UserModel?> getUserDetails(String email) async {
-  try {
-    final QuerySnapshot<Map<String, dynamic>> snapshot = await _firestore
-        .collection('Users')
-        .where('email', isEqualTo: email)
-        .limit(1)
-        .get();
+  Future<UserModel?> getUserDetails(String email) async {
+    try {
+      final QuerySnapshot<Map<String, dynamic>> snapshot = await _firestore
+          .collection('Users')
+          .where('email', isEqualTo: email)
+          .limit(1)
+          .get();
 
-    debugPrint('Number of documents found: ${snapshot.docs.length}');
+      debugPrint('Number of documents found: ${snapshot.docs.length}');
 
-    if (snapshot.docs.isNotEmpty) {
-      final userData = snapshot.docs.first.data();
-      return UserModel(
-        fullName: userData['fullName'],
-        email: userData['email'],
-        password: userData['password'],
-      );
-    } else {
+      if (snapshot.docs.isNotEmpty) {
+        final userData = snapshot.docs.first.data();
+        return UserModel(
+          fullName: userData['fullName'],
+          email: userData['email'],
+          password: userData['password'],
+        );
+      } else {
+        return null;
+      }
+    } catch (e) {
+      debugPrint('Error fetching user details: $e');
       return null;
     }
-  } catch (e) {
-    debugPrint('Error fetching user details: $e');
-    return null;
   }
-}
 
 }
